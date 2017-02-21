@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="cs">
+
+	<head>
+		<title>trhJidla.cz [TJPM]</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+		<link rel="stylesheet" href="{% static 'css/categories_style.css' %}">
+	</head>
+
+
+	<body>
+		<div class="page-header">
+			<h1><a href="/tjpm/">
+				trhJidla.cz TJPM
+			</a></h1>
+		</div>
+
+
+		<div class="content container">
+			<div class="row">
+				<div class="col-md-8">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

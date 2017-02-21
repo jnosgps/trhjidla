@@ -1,0 +1,25 @@
+{% extends 'shop1/index_base.html' %}
+
+{% block page_title %}{{kategorie_familiar}}{% endblock %}
+
+{% block maincontent %}
+	<div class="row">
+		{% if prodlist %}
+			{% for produkt in prodlist %}
+				<div class="col-md-3 col-sm-6">
+					<div class="products-single">
+						{% if produkt.picture.image %}
+							<img src="{{ produkt.picture.image.url }}">
+						{% else %}
+							<img src="/media/producers_img/producer-nologo.png">
+						{% endif %}
+						<h2>{{ produkt.name }}</h2>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<h2>Nejsou zde žádné produkty.</h2>
+		{% endif %}
+			
+	</div>
+{% endblock %}

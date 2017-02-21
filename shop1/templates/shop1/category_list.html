@@ -1,0 +1,19 @@
+{% extends 'shop1/base.html' %}
+
+{% block content %}
+	{% for cat in categories %}
+	<div class="category">
+
+		<header>
+			<h3><a href="{% url 'category_detail' pk=cat.pk %}">{{ cat.name }}</a></h3>
+		</header>
+		
+		<p>ETA: {{ cat.time_param }}</p>
+		
+		<footer>
+			<em>{{ cat.description|linebreaksbr }}</em>
+		</footer>
+		
+	</div>
+	{% endfor %}
+{% endblock %}
