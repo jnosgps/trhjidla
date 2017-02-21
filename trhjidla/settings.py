@@ -25,7 +25,7 @@ SECRET_KEY = 's6-a!@t^p4&6v8qf)b&)9ujx=q_*+1=$33ig5m2)2277ob_wvr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trhjidla.cz']
+ALLOWED_HOSTS = ['trhjidla.cz', 'test.trhjidla.cz', '178.22.71.202']
 
 
 # Application definition
@@ -70,7 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'trhjidla.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
