@@ -127,12 +127,15 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
 	
+	producent = {}
+	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()
 	elif razeni == 'top':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('cost').distinct()
 	else:
 		produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').distinct()
+		producent = Producer.objects.get(pk=razeni)
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
@@ -141,7 +144,48 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'kategorie_imgsrc': katimg[kategorie],
 		'razeni': razeni,
 		'prodlist': produkty,
+		'producent': producent,
 	})
+
+def product_detail(request, pk):
+	m_id = {}
+	member = {}
+	
+	katfam = {
+		'fastfood': u'Rychlé občerstvení',
+		'freshfood': u'Zdravé jídlo',
+		'sweets': u'Zákusky',
+		'raws': u'Suroviny',
+		'direct': u'Přímý prodej',
+	}
+	katimg = {
+		'fastfood': '/static/img/svg/hamburger.svg',
+		'freshfood': '/static/img/svg/fresh-carrot.svg',
+		'sweets': '/static/img/svg/cake.svg',
+		'raws': '/static/img/svg/cucumber.svg',
+		'direct': '/static/img/svg/fresh-carrot.svg',
+	}
+	
+	try:
+		m_id = request.session['member_id']
+	except KeyError:
+		pass
+	
+	if m_id:
+		member = Member.objects.get(id=m_id)
+		member.updateActive()
+	
+	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	product = Product.objects.get(pk=pk)
+	
+	return render(request, 'shop1/product_detail_view.html', {
+		'member': member,
+		'kosik': kosik,
+		'kategorie_familiar': katfam[product.category.name],
+		'kategorie_imgsrc': katimg[product.category.name],
+		'produkt': product,
+	})
+	
 
 #                                                                                                [POST]	LOGIN
 def login_post(request):

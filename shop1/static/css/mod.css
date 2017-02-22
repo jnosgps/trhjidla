@@ -50,7 +50,7 @@
 	font-size: 85%;
 	left: 10%;
 	margin: 0;
-	padding: 10px;
+	padding: 6px;
 	position: absolute;
 	text-align: center;
 	text-transform: uppercase;
@@ -91,7 +91,7 @@
 .home-category:hover {}
 .home-category:hover .home-category-hover a.home-category-hover-linkA { top: 12%; }
 .home-category:hover .home-category-hover a.home-category-hover-linkB { top: 32%; }
-.home-category:hover .home-category-hover a.home-category-hover-linkC { bottom: 31%; }
+.home-category:hover .home-category-hover a.home-category-hover-linkC { bottom: 32%; }
 .home-category:hover .home-category-hover a.home-category-hover-linkD { bottom: 11%; }
 .home-category:hover .home-category-hover:after { left: 0; }
 

@@ -18,11 +18,13 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="producers-image">
 						<div class="thumbnail">
-							{% if restaurace.picture.image %}
-								<img src="{{ restaurace.picture.image.url }}">
-							{% else %}
-								<img src="/media/producers_img/producer-nologo.png">
-							{% endif %}
+							<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">
+								{% if restaurace.picture.image %}
+									<img src="{{ restaurace.picture.image.url }}">
+								{% else %}
+									<img src="/media/producers_img/producer-nologo.png">
+								{% endif %}
+							</a>
 						</div>
 					</div>
 				</div>

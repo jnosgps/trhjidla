@@ -1,0 +1,47 @@
+{% extends 'shop1/index_base.html' %}
+
+{% block page_title %}{{ produkt.name }}{% endblock %}
+{% block mapa_stranky %}
+<div class="row">
+	<div class="col-md-12">
+		<p>
+			<a href="/"><i class="fa fa-home"></i></a> | <img src="{{ kategorie_imgsrc }}" width="32" height="32"> | {{ produkt.producer.name }} | {{ produkt.name }}
+		</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block maincontent %}
+	<div class="row">
+		<div class="col-md-4 col-sm-6">
+			<div class="producers-image">
+				<div class="thumbnail">
+					{% if produkt.picture.image %}
+						<img src="{{ restaurace.picture.image.url }}">
+					{% else %}
+						<img src="/media/producers_img/producer-nologo.png">
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 col-sm-6">
+			<div class="producers-details">
+				<div class="row">
+					{{ produkt.name }}
+				</div>
+				<div class="row">
+					{{ produkt.description }}
+				</div>
+				<div class="row">
+					{{ produkt.producer.name }}
+				</div>
+				<div class="row">
+					Štítky
+				</div>
+				<div class="row">
+					{{ produkt.cost }},- Kč
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
