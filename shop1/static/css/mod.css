@@ -14,6 +14,10 @@
 	padding-bottom: 5px;
 }
 
+/*============================== MAPA STRANKY ============================*/
+.site-branding-area p i.fa { font-size: 32px; margin-top: 3px; }
+.site-branding-area p img { padding-top: -14px; margin-top: -14px; }
+
 /*============================== DLAZDICE HOME_CATEGORY ============================*/
 .home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; }
 .home-category-hover {
@@ -43,7 +47,7 @@
 	border-radius: 5px;
 	color: #fff;
 	display: block;
-	font-size: 16px;
+	font-size: 85%;
 	left: 10%;
 	margin: 0;
 	padding: 10px;
@@ -105,4 +109,17 @@
 .impressum-block p {
 	text-align: justify;
 	text-indent: 20px;
+}
+
+/*============================== PRODUCERS-SINGLE ============================*/
+.producers-image {
+	padding: 0;
+	margin: 0;
+}
+.producers-details {
+	padding: 0;
+	margin: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
 }

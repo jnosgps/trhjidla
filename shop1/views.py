@@ -60,6 +60,13 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'raws': u'Suroviny',
 		'direct': u'Přímý prodej',
 	}
+	katimg = {
+		'fastfood': '/static/img/svg/hamburger.svg',
+		'freshfood': '/static/img/svg/fresh-carrot.svg',
+		'sweets': '/static/img/svg/cake.svg',
+		'raws': '/static/img/svg/cucumber.svg',
+		'direct': '/static/img/svg/fresh-carrot.svg',
+	}
 	
 	try:
 		m_id = request.session['member_id']
@@ -74,13 +81,17 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		
 	if razeni == 'az':
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('name').distinct()
-	else:
+	elif razeni == 'top':
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('registered_date').distinct()
+	else:
+		restaurace  = Producer.objects.filter(product__category__name=kategorie).order_by('online').distinct()
 	
 	return render(request, 'shop1/producers_list_view.html', {
 		'member': member,
 		'kosik': kosik,
 		'kategorie_familiar': katfam[kategorie],
+		'kategorie_imgsrc': katimg[kategorie],
+		'katkat': kategorie,
 		'razeni': razeni,
 		'restlist': restaurace,
 	})
@@ -97,6 +108,13 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'raws': u'Suroviny',
 		'direct': u'Přímý prodej',
 	}
+	katimg = {
+		'fastfood': '/static/img/svg/hamburger.svg',
+		'freshfood': '/static/img/svg/fresh-carrot.svg',
+		'sweets': '/static/img/svg/cake.svg',
+		'raws': '/static/img/svg/cucumber.svg',
+		'direct': '/static/img/svg/fresh-carrot.svg',
+	}
 	
 	try:
 		m_id = request.session['member_id']
@@ -111,13 +129,16 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()
-	else:
+	elif razeni == 'top':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('cost').distinct()
+	else:
+		produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').distinct()
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
 		'kosik': kosik,
 		'kategorie_familiar': katfam[kategorie],
+		'kategorie_imgsrc': katimg[kategorie],
 		'razeni': razeni,
 		'prodlist': produkty,
 	})

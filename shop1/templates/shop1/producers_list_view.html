@@ -1,24 +1,52 @@
 {% extends 'shop1/index_base.html' %}
 
-{% block page_title %}{{kategorie_familiar}}{% endblock %}
+{% block page_title %}{{ kategorie_familiar }}{% endblock %}
+{% block mapa_stranky %}
+<div class="row">
+	<div class="col-md-12">
+		<p>
+			<a href="/"><i class="fa fa-home"></i></a> | <img src="{{ kategorie_imgsrc }}" width="32" height="32">
+		</p>
+	</div>
+</div>
+{% endblock %}
 
 {% block maincontent %}
-	<div class="row">
-		{% if restlist %}
-			{% for restaurace in restlist %}
-				<div class="col-md-3 col-sm-6">
-					<div class="producers-single">
-						{% if restaurace.picture.image %}
-							<img src="{{ restaurace.picture.image.url }}">
-						{% else %}
-							<img src="/media/producers_img/producer-nologo.png">
-						{% endif %}
-						<h2>{{ restaurace.name }}</h2>
+	{% if restlist %}
+		{% for restaurace in restlist %}
+			<div class="row">
+				<div class="col-md-4 col-sm-6">
+					<div class="producers-image">
+						<div class="thumbnail">
+							{% if restaurace.picture.image %}
+								<img src="{{ restaurace.picture.image.url }}">
+							{% else %}
+								<img src="/media/producers_img/producer-nologo.png">
+							{% endif %}
+						</div>
 					</div>
 				</div>
-			{% endfor %}
-		{% else %}
+				<div class="col-md-8 col-sm-6">
+					<div class="producers-details">
+						<div class="row">
+							<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">{{ restaurace.name }}</a>
+						</div>
+						<div class="row">
+							Hodnocení
+						</div>
+						<div class="row">
+							{{ restaurace.address }}
+						</div>
+						<div class="row">
+							Štítky
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<div class="row">
 			<h2>Nejsou zde žádné restaurace.</h2>
-		{% endif %}
-	</div>
+		</div>
+	{% endif %}
 {% endblock %}

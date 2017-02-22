@@ -1,6 +1,15 @@
 {% extends 'shop1/index_base.html' %}
 
 {% block page_title %}{{kategorie_familiar}}{% endblock %}
+{% block mapa_stranky %}
+<div class="row">
+	<div class="col-md-12">
+		<p>
+			<a href="/"><i class="fa fa-home"></i></a> | <img src="{{ kategorie_imgsrc }}" width="32" height="32">
+		</p>
+	</div>
+</div>
+{% endblock %}
 
 {% block maincontent %}
 	<div class="row">

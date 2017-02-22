@@ -1074,3 +1074,4 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .dropdown-menu {
 	background-color: #43ac3e;
 }
+a:visited, a:link {text-decoration: none;}
