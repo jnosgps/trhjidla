@@ -21,7 +21,7 @@ def home(request):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
-	infotext = PageInfo.objects.get().infotext
+	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
 		'member': member,
@@ -81,7 +81,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
-	infotext = PageInfo.objects.get().infotext
+	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('name').distinct()
@@ -131,7 +131,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
-	infotext = PageInfo.objects.get().infotext
+	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
 	
@@ -184,7 +184,7 @@ def product_detail(request, pk):
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
 	product = Product.objects.get(pk=pk)
-	infotext = PageInfo.objects.get().infotext
+	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/product_detail_view.html', {
 		'member': member,
