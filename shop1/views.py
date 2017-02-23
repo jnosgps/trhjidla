@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Category, Producer, Product, Member, Customer, Order, OrderItem
+from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo
 import hashlib
 
 #                                                                                                HOME
@@ -21,10 +21,12 @@ def home(request):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	infotext = PageInfo.object.get().infotext
 	
 	return render(request, 'shop1/home_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'infotext': infotext,
 	})
 
 #                                                                                                IMPRESSUM
@@ -46,6 +48,7 @@ def impressum(request):
 	return render(request, 'shop1/impressum_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'infotext': infotext,
 	})
 
 #                                                                                                PRODUCERS LIST
@@ -78,6 +81,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	infotext = PageInfo.object.get().infotext
 		
 	if razeni == 'az':
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('name').distinct()
@@ -94,6 +98,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'katkat': kategorie,
 		'razeni': razeni,
 		'restlist': restaurace,
+		'infotext': infotext,
 	})
 
 #                                                                                                PRODUCTS LIST
@@ -126,6 +131,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	infotext = PageInfo.object.get().infotext
 	
 	producent = {}
 	
@@ -145,6 +151,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'razeni': razeni,
 		'prodlist': produkty,
 		'producent': producent,
+		'infotext': infotext,
 	})
 
 def product_detail(request, pk):
@@ -177,6 +184,7 @@ def product_detail(request, pk):
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
 	product = Product.objects.get(pk=pk)
+	infotext = PageInfo.object.get().infotext
 	
 	return render(request, 'shop1/product_detail_view.html', {
 		'member': member,
@@ -184,6 +192,7 @@ def product_detail(request, pk):
 		'kategorie_familiar': katfam[product.category.name],
 		'kategorie_imgsrc': katimg[product.category.name],
 		'produkt': product,
+		'infotext': infotext,
 	})
 	
 
