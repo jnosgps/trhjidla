@@ -98,3 +98,6 @@ class OrderItem(models.Model):
 	
 	def __str__(self):
 		return self.quantity + 'x ' + self.product.name
+
+class PageInfo(models.Model):
+	info_text = models.TextField()
