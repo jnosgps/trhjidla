@@ -9,7 +9,7 @@ class Category(models.Model):
 	description = models.TextField(blank=True, null=True)
 	time_param = models.IntegerField(default=0)
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Producer(models.Model):
@@ -37,7 +37,7 @@ class Producer(models.Model):
 		self.online = 0
 		updateLastActive()
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Product(models.Model):
@@ -49,7 +49,7 @@ class Product(models.Model):
 	cost = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='img/products', blank=True, null=True)
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Customer(models.Model):
@@ -58,7 +58,7 @@ class Customer(models.Model):
 	lat = models.DecimalField(max_digits=10, decimal_places=6, default=0)
 	lng = models.DecimalField(max_digits=10, decimal_places=6, default=0)
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Member(models.Model):
@@ -73,7 +73,7 @@ class Member(models.Model):
 		self.last_active = timezone.now()
 		self.save()
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.customer.name + ' (' + self.login + ')'
 		
 
@@ -84,7 +84,7 @@ class Order(models.Model):
 	delivery_time = models.DateTimeField()
 	total_cost = models.IntegerField(default=0)
 	
-	def __str__(self):
+	def __unicode__(self):
 		total_products = len(OrderItem.objects.filter(order=self.pk))
 		registered = ''
 		if self.member:
@@ -96,7 +96,7 @@ class OrderItem(models.Model):
 	product = models.ForeignKey('shop1.Product')
 	quantity = models.IntegerField(default=1)
 	
-	def __str__(self):
+	def __unicode__(self):
 		return self.quantity + 'x ' + self.product.name
 
 class PageInfo(models.Model):
