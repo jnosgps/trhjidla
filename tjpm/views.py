@@ -11,17 +11,17 @@ def dashboard(request):
 		p = Producer.objects.get(id=request.session['producer_id'])
 		p.updateLastActive()
 	except:
-		return login_form(request)
+		return login_form(request, 'except v db')
 	
 	if p:
 		return render(request, 'tjpm/base.html', {
 			'producent': p,
 		})
 	else:
-		return login_form(request)
+		return login_form(request, 'chyba v if')
 
-def login_form(request):
-	return render(request, 'tjpm/login.html', {})
+def login_form(request, message=''):
+	return render(request, 'tjpm/login.html', {'message:', message})
 
 def login(request):
 	p = {}
