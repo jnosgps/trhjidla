@@ -41,3 +41,7 @@ $("#logout-a").click(function() {
 		else alert("Data: " + data + "\nStatus: " + status);
 	});
 });
+
+$('.backbutton').on('click', function() {
+	window.history.back();
+});
