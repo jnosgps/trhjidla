@@ -19,8 +19,8 @@
 					<div class="producers-image">
 						<div class="thumbnail">
 							<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">
-								{% if restaurace.picture.image %}
-									<img src="{{ restaurace.picture.image.url }}">
+								{% if restaurace.picture %}
+									<img src="{{ restaurace.picture.url }}">
 								{% else %}
 									<img src="/media/producers_img/producer-nologo.png">
 								{% endif %}

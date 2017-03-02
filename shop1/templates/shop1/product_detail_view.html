@@ -16,8 +16,8 @@
 		<div class="col-md-4 col-sm-6">
 			<div class="producers-image">
 				<div class="thumbnail">
-					{% if produkt.picture.image %}
-						<img src="{{ restaurace.picture.image.url }}">
+					{% if produkt.picture %}
+						<img src="{{ restaurace.picture.url }}">
 					{% else %}
 						<img src="/media/producers_img/producer-nologo.png">
 					{% endif %}

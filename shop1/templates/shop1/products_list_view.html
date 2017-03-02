@@ -54,8 +54,8 @@
 					<div class="products-single">
 						<div class="thumbnail">
 							<a href="{% url 'product_detail' pk=produkt.pk %}">
-								{% if produkt.picture.image %}
-									<img src="{{ produkt.picture.image.url }}">
+								{% if produkt.picture %}
+									<img src="{{ produkt.picture.url }}">
 								{% else %}
 									<img src="/media/producers_img/producer-nologo.png">
 								{% endif %}
