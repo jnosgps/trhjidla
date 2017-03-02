@@ -45,3 +45,6 @@ $("#logout-a").click(function() {
 $('.backbutton').on('click', function() {
 	window.history.back();
 });
+$('.twobackbutton').on('click', function() {
+	window.history.go(-2);
+});
