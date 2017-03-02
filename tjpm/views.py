@@ -15,6 +15,11 @@ def dashboard(request):
 		return login_form(request)
 	
 	if p:
+		try:
+			del request.session['message']
+		except:
+			pass
+
 		return render(request, 'tjpm/base.html', {
 			'producent': p,
 		})
@@ -23,8 +28,6 @@ def dashboard(request):
 		return login_form(request)
 
 def login_form(request):
-	try:
-		return HttpResponse(request.session['message'])
 	except:
 		return render(request, 'tjpm/login.html')
 
