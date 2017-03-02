@@ -28,7 +28,6 @@ def dashboard(request):
 		return login_form(request)
 
 def login_form(request):
-	except:
 		return render(request, 'tjpm/login.html')
 
 def login(request):
