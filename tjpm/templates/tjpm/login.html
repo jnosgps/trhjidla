@@ -32,7 +32,7 @@
 					<button id="tjpm-signin"><i class="fa fa-sign-in"></i> Přihlásit se</button>
 				</form>
 				<div class="row">
-					<p>{{ message }}</p>
+					<p>{% if message %}{{ message }}{% endif %}</p>
 				</div>
 			</div>
 		</div>
