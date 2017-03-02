@@ -24,7 +24,7 @@ SECRET_KEY = 's6-a!@t^p4&6v8qf)b&)9ujx=q_*+1=$33ig5m2)2277ob_wvr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trhjidla.cz', 'test.trhjidla.cz', '178.22.71.202']
+ALLOWED_HOSTS = ['trhjidla.cz', 'test.trhjidla.cz']
 
 # Application definition
 
@@ -74,13 +74,19 @@ WSGI_APPLICATION = 'trhjidla.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'trhjidla',
+#      'ENGINE': 'django.db.backends.mysql',
+#      'NAME': 'trhjidla',
+#		'USER': 'trhjidla',
+#		'PASSWORD': 'PdQXc9EarQPNxE7y',
+#		'HOST': 'localhost',
+#		'PORT': '3306',
+#		'CHARSET': 'utf-8',
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'trhjidla',
 		'USER': 'trhjidla',
-		'PASSWORD': 'PdQXc9EarQPNxE7y',
+		'PASSWORD': 'jWY.KRch',
 		'HOST': 'localhost',
-		'PORT': '3306',
-		'CHARSET': 'utf-8',
+		'PORT': '',
     }
 }
 
