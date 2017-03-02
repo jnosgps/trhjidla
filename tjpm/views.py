@@ -32,7 +32,7 @@ def login(request):
 			request.session['producer_id'] = p.id
 			p.updateLastActive()
 			return HttpResponse("Successfully logged in")
-		else
+		else:
 			return HttpResponse("Bad credentials")
 	except:
 		return HttpResponse("Bad credentials")
