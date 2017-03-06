@@ -25,11 +25,10 @@ $("#tjpm-signin").on('click', function(e) {
 	}
 });
 
-function tjpmSignOut() {
+$("#tjpm-signout").on('click', function(e) {
 	$.post('logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
 		if (status == 'success') { location.reload(true);
 			console.log('LOGIN WAS SUCCESSFULL');}
 		else alert("Data: " + data + "\nStatus: " + status);
 	});
 });
-$("#tjpm-signout").on('click', tjpmSignOut);
