@@ -1,5 +1,6 @@
 // POST handlers
-$("#tjpm-signin").click(function() {
+$("#tjpm-signin").click(function(e) {
+	e.preventDefault();
 	if ($('#tjpm-login').val() == '') {}
 	else if ($('#tjpm-pass').val() == '') {}
 	else {
