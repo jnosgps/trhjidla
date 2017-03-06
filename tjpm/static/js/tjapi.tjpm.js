@@ -30,9 +30,9 @@ $("#tjpm-signin").on('click', function(e) {
 	}
 });
 
-/*$("#tjpm-signout").on('click', function(e) {
+$("#tjpm-signout").on('click', function(e) {
 	$.post('logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
 		if (status == 'success') { location.reload(true); }
 		else alert("Data: " + data + "\nStatus: " + status);
 	});
-});*/
+});
