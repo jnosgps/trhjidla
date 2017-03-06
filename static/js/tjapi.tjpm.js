@@ -10,6 +10,7 @@ $("#tjpm-signin").click(function() {
 			if (status == 'success') location.reload(true);
 			else alert("Data: " + data + "\nStatus: " + status);
 		});
+		console.log('everything has been done');
 	}
 });
 $("#tjpm-signout").click(function() {
