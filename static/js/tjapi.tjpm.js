@@ -1,7 +1,7 @@
 // POST handlers
 var hasher = new jsSHA("SHA-256", "TEXT");
 
-function tjpmSignIn(e) {
+$("#tjpm-signin").on('click', function(e) {
 	e.preventDefault();
 	console.log('SignIn called...');
 	if ($('#tjpm-login').val() == '') {
@@ -21,7 +21,6 @@ function tjpmSignIn(e) {
 		console.log('everything has been done');
 	}
 });
-$("#tjpm-signin").on('click', tjpmSignIn);
 
 function tjpmSignOut() {
 	$.post('logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
