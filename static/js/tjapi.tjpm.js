@@ -1,7 +1,8 @@
 // POST handlers
 var hasher = new jsSHA("SHA-256", "TEXT");
 
-function tjpmSignIn() {
+function tjpmSignIn(e) {
+	e.preventDefault();
 	console.log('SignIn called...');
 	if ($('#tjpm-login').val() == '') {
 		console.log('tjpm-login is blank...');}
