@@ -17,8 +17,7 @@ $("#tjpm-signin").on('click', function(e) {
 		var postdata = {'login': $('#tjpm-login').val(), 'password': hasher.getHash("HEX"), 'csrfmiddlewaretoken': csrf_token};
 		console.log('post data: ' + postdata);
 		$.post("login/", postdata, function(data, status) {
-			if (status == 'success') { location.reload(true);
-			console.log('LOGIN WAS SUCCESSFULL');}
+			if (status == 'success') { location.reload(true); }
 			else alert("Data: " + data + "\nStatus: " + status);
 		});
 		console.log('everything has been done');
@@ -27,8 +26,7 @@ $("#tjpm-signin").on('click', function(e) {
 
 $("#tjpm-signout").on('click', function(e) {
 	$.post('logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
-		if (status == 'success') { location.reload(true);
-			console.log('LOGIN WAS SUCCESSFULL');}
+		if (status == 'success') { location.reload(true); }
 		else alert("Data: " + data + "\nStatus: " + status);
 	});
 });
