@@ -1,6 +1,8 @@
 // POST handlers
 var hasher = new jsSHA("SHA-256", "TEXT");
-$('.login-form').on('submit', false);
+$('.login-form').on('submit', function(e) {
+	e.preventDefault();
+});
 
 $("#tjpm-signin").on('click', function(e) {
 	e.preventDefault();
