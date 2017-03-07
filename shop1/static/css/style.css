@@ -126,6 +126,8 @@ z-index: 999;}
 	width: 7%;
 	height: auto;
 	margin-left: 15px;
+	margin-right: 0;
+	padding-right: 0;
 }
 .product-count {
     background: none repeat scroll 0 0 #43ac3e;
