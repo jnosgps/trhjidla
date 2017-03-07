@@ -101,7 +101,7 @@ z-index: 999;}
 .logo h1 a span {
     color: #43ac3e;
 }
-.logo h1 img {
+.logo h1 svg {
 	width: 50%;
 	height: auto;
 }
