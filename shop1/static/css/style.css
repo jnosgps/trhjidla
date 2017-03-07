@@ -101,6 +101,10 @@ z-index: 999;}
 .logo h1 a span {
     color: #43ac3e;
 }
+.logo h1 img {
+	width: 50%;
+	height: auto;
+}
 .shopping-item {
     border: 1px solid #ddd;
 	border-radius: 20px;
