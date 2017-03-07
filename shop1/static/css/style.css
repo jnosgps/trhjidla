@@ -132,6 +132,7 @@ z-index: 999;}
 	padding-top: -2px;
 	padding-right: 0;
 }
+#cart-img:hover { fill: #fff; }
 .product-count {
     background: none repeat scroll 0 0 #43ac3e;
     border-radius: 50%;
