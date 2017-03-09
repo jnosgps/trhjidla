@@ -101,12 +101,12 @@ class OrderItem(models.Model):
 
 class PageInfo(models.Model):
 	info_text = models.TextField()
-	impressum1 = models.TextField()
-	impressum2 = models.TextField()
-	impressum3 = models.TextField()
-	impressum4 = models.TextField()
-	impressum5 = models.TextField()
-	impressum6 = models.TextField()
+	impressum1 = models.TextField(blank=True, null=True)
+	impressum2 = models.TextField(blank=True, null=True)
+	impressum3 = models.TextField(blank=True, null=True)
+	impressum4 = models.TextField(blank=True, null=True)
+	impressum5 = models.TextField(blank=True, null=True)
+	impressum6 = models.TextField(blank=True, null=True)
 	image1 = models.ImageField(upload_to='img/impressum', blank=True, null=True)
 	image2 = models.ImageField(upload_to='img/impressum', blank=True, null=True)
 	image3 = models.ImageField(upload_to='img/impressum', blank=True, null=True)
