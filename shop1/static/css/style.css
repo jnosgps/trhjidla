@@ -123,7 +123,7 @@ z-index: 999;}
 .cart-amount {
     color: #43ac3e;
     font-weight: 70;
-	padding-left: 12px;
+	padding-left: 6px;
 }
 .cart-amount:hover {
 	color: #fff;
