@@ -90,3 +90,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+
+svg {
+	width: 40%;
+	height: auto;
+}
