@@ -137,5 +137,7 @@
 .products-single h3 {
 	position: relative;
 	float: right;
-	padding-right: 15px;
+	padding-top: 0;
+	margin-top: 0;
+	padding-right: 25px;
 }
