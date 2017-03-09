@@ -114,7 +114,7 @@ z-index: 999;}
     padding: 10px;
     position: relative;
 	background-color: #f4f4f4;
-	max-width: 200px;
+	max-width: 130px;
 	padding-right: 0;
 }
 .shopping-item a {
@@ -136,7 +136,7 @@ z-index: 999;}
 	padding-top: -2px;
 	padding-right: 0;
 }
-#cart-img:hover { fill: #fff; }
+/*#cart-img:hover { fill: #fff; }*/
 .product-count {
     background: none repeat scroll 0 0 #43ac3e;
     border-radius: 50%;
@@ -151,9 +151,6 @@ z-index: 999;}
 	font-weight: bold;
     top: -10px;
     width: 27px;
-}
-.shopping-item i.fa {
-    margin-left: 15px;
 }
 
 
