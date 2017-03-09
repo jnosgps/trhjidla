@@ -19,7 +19,7 @@ def dashboard(request):
 		except:
 			pass
 
-		return render(request, 'tjpm/base.html', {
+		return render(request, 'tjpm/dashboard.html', {
 			'producent': p,
 		})
 	else:
