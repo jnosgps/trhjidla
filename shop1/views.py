@@ -44,12 +44,13 @@ def impressum(request):
 		member.updateActive()
 	
 	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
-	infotext = PageInfo.objects.get().info_text
+	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
 		'member': member,
 		'kosik': kosik,
-		'infotext': infotext,
+		'infotext': pi.info_text,
+		'pi': pi,
 	})
 
 #                                                                                                PRODUCERS LIST

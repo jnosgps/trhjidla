@@ -17,18 +17,26 @@
 	
 		<div class="col-md-6">
 			<div class="impressum-block">
-				<img src="/static/img/brand1.png">
+				{% if pi.image1 %}
+					<img src="{{ pi.image1.url }}">
+				{% else %}
+					<img src="/static/img/brand1.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum1 }}
 				</p>
 			</div>
 		</div>
 		
 		<div class="col-md-6">
 			<div class="impressum-block">
-				<img src="/static/img/brand2.png">
+				{% if pi.image2 %}
+					<img src="{{ pi.image2.url }}">
+				{% else %}
+					<img src="/static/img/brand2.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum2 }}
 				</p>
 			</div>
 		</div>
@@ -38,25 +46,37 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="impressum-block">
-				<img src="/static/img/brand3.png">
+				{% if pi.image3 %}
+					<img src="{{ pi.image3.url }}">
+				{% else %}
+					<img src="/static/img/brand3.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum3 }}
 				</p>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="impressum-block">
-				<img src="/static/img/brand4.png">
+				{% if pi.image4 %}
+					<img src="{{ pi.image4.url }}">
+				{% else %}
+					<img src="/static/img/brand4.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum4 }}
 				</p>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="impressum-block">
-				<img src="/static/img/brand5.png">
+				{% if pi.image5 %}
+					<img src="{{ pi.image5.url }}">
+				{% else %}
+					<img src="/static/img/brand5.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum5 }}
 				</p>
 			</div>
 		</div>
@@ -65,9 +85,13 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="impressum-block">
-				<img src="/static/img/brand6.png">
+				{% if pi.image6 %}
+					<img src="{{ pi.image6.url }}">
+				{% else %}
+					<img src="/static/img/brand6.png">
+				{% endif %}
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?
+					{{ pi.impressum6 }}
 				</p>
 			</div>
 		</div>
