@@ -19,7 +19,7 @@
 .site-branding-area p img { padding-top: -14px; margin-top: -14px; }
 
 /*============================== DLAZDICE HOME_CATEGORY ============================*/
-.home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; }
+.home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; background-color: #ddd; }
 .home-category-hover {
 	position: absolute;
 	left: 0;
@@ -29,7 +29,6 @@
 	overflow: hidden;
 	border: 1px solid #ddd;
 	border-radius: 20px;
-	background: #333;
 }
 .home-category-hover:after {
 	background: none repeat scroll 0 0 #000;
