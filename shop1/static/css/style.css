@@ -160,12 +160,13 @@ z-index: 999;}
 .shopping-item:hover {
     background: none repeat scroll 0 0 #43ac3e;
     border-color: #43ac3e;
+	color: #fff;
 }
 .shopping-item:hover a {
 	background-color: #43ac3e;
     color: #fff;text-decoration: none
 }
-.shopping-item:hover .cart-amunt {
+.shopping-item:hover .cart-amount {
 	background-color: #43ac3e;
     color: #fff;
 }
