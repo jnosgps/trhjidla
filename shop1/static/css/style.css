@@ -115,6 +115,7 @@ z-index: 999;}
     position: relative;
 	background-color: #f4f4f4;
 	max-width: 200px;
+	padding-right: 0;
 }
 .shopping-item a {
     color: #666;
@@ -122,6 +123,9 @@ z-index: 999;}
 .cart-amount {
     color: #43ac3e;
     font-weight: 70;
+}
+.cart-amount:hover {
+	color: #fff;
 }
 #cart-img {
 	width: 10%;
