@@ -125,7 +125,9 @@
 	height: 100%;
 }
 
-
+.producers-details a {
+	font-size: 200%;
+}
 
 
 .backbutton {
