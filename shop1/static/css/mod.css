@@ -133,3 +133,8 @@
 .backbutton {
 	color: #43ac3e;
 }
+
+.products-single h3 {
+	position: relative;
+	float: right;
+}
