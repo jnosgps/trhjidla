@@ -29,14 +29,14 @@ $("#login-a").click(function() {
 		var hasher = new jsSHA("SHA-256", "TEXT");
 		hasher.update($('#login-password').val());
 		var postdata = {'login': $('#login-login').val(), 'password': hasher.getHash("HEX"), 'csrfmiddlewaretoken': csrf_token};
-		$.post("login/", postdata, function(data, status) {
+		$.post("/shop1/login/", postdata, function(data, status) {
 			if (status == 'success') location.reload(true);
 			else alert("Data: " + data + "\nStatus: " + status);
 		});
 	}
 });
 $("#logout-a").click(function() {
-	$.post('logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
+	$.post('/shop1/logout/', {'csrfmiddlewaretoken': csrf_token}, function(data, status) {
 		if (status == 'success') location.reload(true);
 		else alert("Data: " + data + "\nStatus: " + status);
 	});
@@ -45,7 +45,7 @@ $("#logout-a").click(function() {
 
 $('.addToCart').on('click', function() {
 	var postdata = {'productId': $(this).data.productId, 'productValue': $(this).data.productValue, 'csrfmiddlewaretoken': csrf_token};
-	$.post('addToCart/', postdata, function(data, status) {
+	$.post('/shop1/addToCart/', postdata, function(data, status) {
 		if (status == 'success') location.reload(true);
 		else alert("Data: " + data + "\nStatus:" + status);
 	});
