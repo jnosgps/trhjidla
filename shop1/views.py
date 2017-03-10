@@ -20,7 +20,16 @@ def home(request):
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
+	if order:
+		kosik['hodnota'] = order.total_cost
+		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
@@ -43,7 +52,16 @@ def impressum(request):
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
+	if order:
+		kosik['hodnota'] = order.total_cost
+		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
 	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
@@ -82,7 +100,16 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
+	if order:
+		kosik['hodnota'] = order.total_cost
+		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
@@ -132,7 +159,16 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
+	if order:
+		kosik['hodnota'] = order.total_cost
+		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
 	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
@@ -184,7 +220,16 @@ def product_detail(request, pk):
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	kosik = { 'hodnota': 1250, 'pocetPolozek': 24 }
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
+	if order:
+		kosik['hodnota'] = order.total_cost
+		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
 	product = Product.objects.get(pk=pk)
 	infotext = PageInfo.objects.get().info_text
 	
