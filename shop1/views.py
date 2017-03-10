@@ -281,5 +281,6 @@ def addToCart_post(request):
 	
 	order['items'] += request.POST['productId']
 	order['total_cost'] += request.POST['productValue']
+	request.session['order'] = order
 	
 	return HttpResponse("Successfully added to cart!")
