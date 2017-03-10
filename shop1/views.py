@@ -274,19 +274,12 @@ def algorythmize_text(request):
 		return HttpResponse('error')
 
 def addToCart_post(request):
-	order = {}
-	try:
+	if 'order' not in request.session:
+		order = {'items': [], 'total_cost': 0}
+	else
 		order = request.session['order']
-	except KeyError:
-		pass
 	
-	if order:
-		pass
-	else:
-		order.items = []
-		order.total_cost = 0
-	
-	order.items += request.POST['productId']
-	order.total_cost += request.POST['productValue']
+	order['items'] += request.POST['productId']
+	order['total_cost'] += request.POST['productValue']
 	
 	return HttpResponse("Successfully added to cart!")
