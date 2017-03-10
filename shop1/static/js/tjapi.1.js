@@ -42,6 +42,17 @@ $("#logout-a").click(function() {
 	});
 });
 
+
+$('.addToCart').on('click', function() {
+	var postdata = {'productId': $(this).data.productId, 'productValue': $(this).data.productValue, 'csrfmiddlewaretoken': csrf_token};
+	$.post('addToCart/', postdata, function(data, status) {
+		if (status == 'success') location.reload(true);
+		else alert("Data: " + data + "\nStatus:" + status);
+	});
+});
+
+
+
 $('.backbutton').on('click', function() {
 	window.history.back();
 });

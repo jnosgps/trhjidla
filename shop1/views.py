@@ -29,7 +29,7 @@ def home(request):
 	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
 	if order:
 		kosik['hodnota'] = order.total_cost
-		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
+		kosik['pocetPolozek'] = len(order.items)
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
@@ -61,7 +61,7 @@ def impressum(request):
 	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
 	if order:
 		kosik['hodnota'] = order.total_cost
-		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
+		kosik['pocetPolozek'] = len(order.items)
 	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
@@ -109,7 +109,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
 	if order:
 		kosik['hodnota'] = order.total_cost
-		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
+		kosik['pocetPolozek'] = len(order.items)
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
@@ -168,7 +168,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
 	if order:
 		kosik['hodnota'] = order.total_cost
-		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
+		kosik['pocetPolozek'] = len(order.items)
 	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
@@ -229,7 +229,7 @@ def product_detail(request, pk):
 	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
 	if order:
 		kosik['hodnota'] = order.total_cost
-		kosik['pocetPolozek'] = len(OrderItem.objects.filter(order=order.id))
+		kosik['pocetPolozek'] = len(order.items)
 	product = Product.objects.get(pk=pk)
 	infotext = PageInfo.objects.get().info_text
 	
@@ -272,3 +272,19 @@ def algorythmize_text(request):
 		return HttpResponse(hashlib.sha256(request.GET['q']).hexdigest())
 	except:
 		return HttpResponse('error')
+
+def addToCart_post(request):
+	order = {}
+	try:
+		order = request.session['order']
+	except KeyError:
+		pass
+	
+	if !order:
+		order.items = []
+		order.total_cost = 0
+	
+	order.items += request.POST['productId']
+	order.total_cost += request.POST['productValue']
+	
+	return HttpResponse("Successfully added to cart!")
