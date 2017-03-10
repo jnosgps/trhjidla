@@ -280,7 +280,7 @@ def addToCart_post(request):
 		order = request.session['order']
 	
 	order['items'] += request.POST['productId']
-	order['total_cost'] += request.POST['productValue']
+	order['total_cost'] += int(request.POST['productValue'])
 	request.session['order'] = order
 	
 	return HttpResponse("Successfully added to cart!")
