@@ -45,8 +45,9 @@ $("#logout-a").click(function() {
 
 $('.addToCart').on('click', function() {
 	var postdata = {'productId': $(this).data.productId, 'productValue': $(this).data.productValue, 'csrfmiddlewaretoken': csrf_token};
+	console.log(postdata)
 	$.post('/shop1/addToCart/', postdata, function(data, status) {
-		if (status == 'success') location.reload(true);
+		if (status == 'success') console.log(location.reload(true));
 		else alert("Data: " + data + "\nStatus:" + status);
 	});
 });
