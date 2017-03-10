@@ -11,5 +11,6 @@ urlpatterns = [
 	url(r'^algo/$', views.algorythmize_text, name='algorythmize_text'),
 	url(r'^login/$', views.login_post, name='login_post'),
 	url(r'^logout/$', views.logout_post, name='logout_post'),
+	url(r'^addToCart/$', views.addToCart_post, name='addToCart_post'),
 	url(r'^vize-projektu/$', views.impressum, name='impressum'),
 ]
