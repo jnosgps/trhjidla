@@ -280,7 +280,9 @@ def addToCart_post(request):
 	except KeyError:
 		pass
 	
-	if !order:
+	if order:
+		pass
+	else:
 		order.items = []
 		order.total_cost = 0
 	
