@@ -276,7 +276,7 @@ def algorythmize_text(request):
 def addToCart_post(request):
 	if 'order' not in request.session:
 		order = {'items': [], 'total_cost': 0}
-	else
+	else:
 		order = request.session['order']
 	
 	order['items'] += request.POST['productId']
