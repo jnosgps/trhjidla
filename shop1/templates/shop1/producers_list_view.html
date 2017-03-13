@@ -15,8 +15,8 @@
 	{% if restlist %}
 		<div class="row">
 			{% for restaurace in restlist %}
-				<div class="col-md-4 col-sm-6">
-					<div class="producers-image">
+				<div class="col-md-3 col-sm-6">
+					<div class="products-single">
 						<div class="thumbnail">
 							<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">
 								{% if restaurace.picture %}
@@ -26,21 +26,15 @@
 								{% endif %}
 							</a>
 						</div>
-					</div>
-				</div>
-				<div class="col-md-8 col-sm-6">
-					<div class="producers-details">
+						<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">{{ restaurace.name }}</a>
 						<div class="row">
-							<a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">{{ restaurace.name }}</a>
+							Štítky
 						</div>
 						<div class="row">
 							Hodnocení
 						</div>
 						<div class="row">
 							{{ restaurace.address }}
-						</div>
-						<div class="row">
-							Štítky
 						</div>
 					</div>
 				</div>
