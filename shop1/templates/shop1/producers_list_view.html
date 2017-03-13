@@ -13,8 +13,8 @@
 
 {% block maincontent %}
 	{% if restlist %}
-		{% for restaurace in restlist %}
-			<div class="row">
+		<div class="row">
+			{% for restaurace in restlist %}
 				<div class="col-md-4 col-sm-6">
 					<div class="producers-image">
 						<div class="thumbnail">
@@ -44,8 +44,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
+		</div>
 	{% else %}
 		<div class="row">
 			<h2>Nejsou zde žádné restaurace.</h2>
