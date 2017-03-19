@@ -19,7 +19,7 @@
 .site-branding-area p img { padding-top: -14px; margin-top: -14px; }
 
 /*============================== DLAZDICE HOME_CATEGORY ============================*/
-.home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; background-color: #ddd; border-radius: 20px; }
+.home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; border-radius: 20px; }
 .home-category-hover {
 	position: absolute;
 	left: 0;
