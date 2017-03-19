@@ -30,6 +30,7 @@ def home(request):
 	if order:
 		kosik['hodnota'] = order['total_cost']
 		kosik['pocetPolozek'] = len(order['items'])
+		kosik['polozky'] = order['items']
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
@@ -62,6 +63,7 @@ def impressum(request):
 	if order:
 		kosik['hodnota'] = order['total_cost']
 		kosik['pocetPolozek'] = len(order['items'])
+		kosik['polozky'] = order['items']
 	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
@@ -110,6 +112,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	if order:
 		kosik['hodnota'] = order['total_cost']
 		kosik['pocetPolozek'] = len(order['items'])
+		kosik['polozky'] = order['items']
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
@@ -169,6 +172,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	if order:
 		kosik['hodnota'] = order['total_cost']
 		kosik['pocetPolozek'] = len(order['items'])
+		kosik['polozky'] = order['items']
 	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
@@ -230,6 +234,7 @@ def product_detail(request, pk):
 	if order:
 		kosik['hodnota'] = order['total_cost']
 		kosik['pocetPolozek'] = len(order['items'])
+		kosik['polozky'] = order['items']
 	product = Product.objects.get(pk=pk)
 	infotext = PageInfo.objects.get().info_text
 	
