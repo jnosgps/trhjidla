@@ -98,13 +98,16 @@
 
 /*============================== IMPRESSUM ============================*/
 .impressum-block {
-	
+	border-radius: 15px;
+	border: #ddd solid 1px;
 }
 
 .impressum-block img {
 	position: relative;
-	margin-bottom: -20px;
+	margin-bottom: 10px;
 	margin-left: 15px;
+	width: 75%;
+	height: 75%;
 }
 
 .impressum-block p {

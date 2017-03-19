@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<p>
-			<a href="/"><i class="fa fa-home"></i></a> | <img src="/static/img/svg/fresh-carrot.svg" width="32" height="32">			
+			<a href="/"><i class="fa fa-home"></i></a> | <img src="/static/img/svg/vize.svg" width="32" height="32">			
 		</p>
 	</div>
 </div>
@@ -15,7 +15,7 @@
 {% block maincontent %}
 	<div class="row">
 	
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image1 %}
 					<img src="{{ pi.image1.url }}">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image2 %}
 					<img src="{{ pi.image2.url }}">
@@ -41,9 +41,6 @@
 			</div>
 		</div>
 		
-	</div>
-	
-	<div class="row">
 		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image3 %}
@@ -56,7 +53,12 @@
 				</p>
 			</div>
 		</div>
-		<div class="col-md-4">
+		
+	</div>
+	
+	<div class="row">
+	
+		<div class="col-md-6">
 			<div class="impressum-block">
 				{% if pi.image4 %}
 					<img src="{{ pi.image4.url }}">
@@ -68,7 +70,8 @@
 				</p>
 			</div>
 		</div>
-		<div class="col-md-4">
+		
+		<div class="col-md-6">
 			<div class="impressum-block">
 				{% if pi.image5 %}
 					<img src="{{ pi.image5.url }}">
@@ -80,10 +83,12 @@
 				</p>
 			</div>
 		</div>
+		
 	</div>
 	
 	<div class="row">
-		<div class="col-md-12">
+	
+		<div class="col-md-6">
 			<div class="impressum-block">
 				{% if pi.image6 %}
 					<img src="{{ pi.image6.url }}">
@@ -95,5 +100,19 @@
 				</p>
 			</div>
 		</div>
+	
+		<div class="col-md-6">
+			<div class="impressum-block">
+				{% if pi.image7 %}
+					<img src="{{ pi.image7.url }}">
+				{% else %}
+					<img src="/static/img/brand6.png">
+				{% endif %}
+				<p>
+					{{ pi.impressum7 }}
+				</p>
+			</div>
+		</div>
+		
 	</div>
 {% endblock %}
