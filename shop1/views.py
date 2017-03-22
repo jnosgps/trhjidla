@@ -290,7 +290,7 @@ def addToCart_post(request):
 	
 	return HttpResponse("Successfully added to cart!")
 
-def cartItemRemove_getw(request, id):
+def cartItemRemove_get(request, id):
 	if 'order' not in request.session:
 		return HttpResponse("No cart to remove item from!")
 	
