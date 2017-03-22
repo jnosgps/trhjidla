@@ -12,6 +12,6 @@ urlpatterns = [
 	url(r'^login/$', views.login_post, name='login_post'),
 	url(r'^logout/$', views.logout_post, name='logout_post'),
 	url(r'^addToCart/$', views.addToCart_post, name='addToCart_post'),
-	url(r'^cartItemRemove/(?p<pk>([0-9]+))/$', views.cartItemRemove_get, name='cartItemRemove_get'),
+	url(r'^cartItemRemove/(?P<pk>([0-9]+))/$', views.cartItemRemove_get, name='cartItemRemove_get'),
 	url(r'^vize-projektu/$', views.impressum, name='impressum'),
 ]
