@@ -289,3 +289,15 @@ def addToCart_post(request):
 	request.session['order'] = order
 	
 	return HttpResponse("Successfully added to cart!")
+
+def cartItemRemove_getw(request, id):
+	if 'order' not in request.session:
+		return HttpResponse("No cart to remove item from!")
+	
+	order = request.session['order']
+	i = Product.objects.get(id=id)
+	order['items'].remove(id)
+	order['total_cost'] -= i.cost
+	request.session['order'] = order
+	
+	return HttpResponse("Successfully removed from cart!")
