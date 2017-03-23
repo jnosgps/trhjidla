@@ -296,7 +296,7 @@ def cartItemRemove_get(request, pk):
 	
 	order = request.session['order']
 	i = Product.objects.get(pk=pk)
-	order['items'].remove(id)
+	order['items'].remove(pk)
 	order['total_cost'] -= i.cost
 	request.session['order'] = order
 	
