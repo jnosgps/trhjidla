@@ -53,6 +53,14 @@ $('.addToCart').on('click', function() {
 });
 
 
+$('.cartItemRemove').on('click', function() {
+	var itemId = $(this).data.itemid;
+	$.get('/shop1/cartItemRemove/' + itemId + '/', function(data, status) {
+		if (status == 'success') location.reload(true);
+		else alert('Data: ' + data + '\nStatus: ' + status);
+	});
+});
+
 
 $('.backbutton').on('click', function() {
 	window.history.back();
