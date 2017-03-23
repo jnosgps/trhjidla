@@ -15,7 +15,7 @@
 {% block maincontent %}
 	<div class="row">
 	
-		<div class="col-md-4">
+		<div class="col-md-12">
 			<div class="impressum-block">
 				{% if pi.image1 %}
 					<img src="{{ pi.image1.url }}">
@@ -28,7 +28,11 @@
 			</div>
 		</div>
 		
-		<div class="col-md-4">
+	</div>
+	
+	<div class="row">
+	
+		<div class="col-md-12">
 			<div class="impressum-block">
 				{% if pi.image2 %}
 					<img src="{{ pi.image2.url }}">
@@ -40,8 +44,12 @@
 				</p>
 			</div>
 		</div>
-		
-		<div class="col-md-4">
+	
+	</div>
+	
+	<div class="row">
+	
+		<div class="col-md-6">
 			<div class="impressum-block">
 				{% if pi.image3 %}
 					<img src="{{ pi.image3.url }}">
@@ -54,10 +62,6 @@
 			</div>
 		</div>
 		
-	</div>
-	
-	<div class="row">
-	
 		<div class="col-md-6">
 			<div class="impressum-block">
 				{% if pi.image4 %}
@@ -71,7 +75,11 @@
 			</div>
 		</div>
 		
-		<div class="col-md-6">
+	</div>
+	
+	<div class="row">
+		
+		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image5 %}
 					<img src="{{ pi.image5.url }}">
@@ -83,12 +91,8 @@
 				</p>
 			</div>
 		</div>
-		
-	</div>
 	
-	<div class="row">
-	
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image6 %}
 					<img src="{{ pi.image6.url }}">
@@ -101,7 +105,7 @@
 			</div>
 		</div>
 	
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<div class="impressum-block">
 				{% if pi.image7 %}
 					<img src="{{ pi.image7.url }}">
