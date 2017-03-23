@@ -103,7 +103,7 @@
 							<div class="dropdown-menu" aria-labelledby="dropdownKosik">
 								<ul>
 									{% for produkt in kosik.polozky %}
-										<li>{{ produkt }} <a href="/shop1/cartItemRemove/{{ produkt.pk }}/"><i class="fa fa-close"></i></a></li>
+										<li>{{ produkt }} <a href="/shop1/cartItemRemove/{{ produkt }}/"><i class="fa fa-close"></i></a></li>
 									{% endfor %}
 								</ul>
 								<hr>
