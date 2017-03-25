@@ -171,6 +171,8 @@ def product_detail(request, pk):
 	
 	infotext = PageInfo.objects.get().info_text
 	
+	product = Product.objects.get(pk=pk)
+	
 	return render(request, 'shop1/product_detail_view.html', {
 		'member': member,
 		'kosik': kosik,
@@ -179,7 +181,6 @@ def product_detail(request, pk):
 		'produkt': product,
 		'infotext': infotext,
 	})
-	
 
 #                                                                                                [POST]	LOGIN
 def login_post(request):
