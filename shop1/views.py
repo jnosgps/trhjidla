@@ -6,31 +6,45 @@ from django.http import HttpResponse
 from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo
 import hashlib
 
-#                                                                                                HOME
-def home(request):
-	m_id = {}
+def tryToGetMember(request):
 	member = {}
-	
+	m_id = {}
 	try:
 		m_id = request.session['member_id']
 	except KeyError:
 		pass
-	
 	if m_id:
 		member = Member.objects.get(id=m_id)
 		member.updateActive()
 	
-	order = {}
+	return member
+
+def tryToGetBasket(request):
+	kosik = {
+		'polozky': {},
+		'soucet': 0,
+		'pocet': 0
+	}
+	productIds = []
 	try:
-		order = request.session['order']
+		productIds = request.session['items']
 	except KeyError:
 		pass
 	
-	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
-	if order:
-		kosik['hodnota'] = order['total_cost']
-		kosik['pocetPolozek'] = len(order['items'])
-		kosik['polozky'] = order['items']
+	if productIds:
+		for pid in productIds:
+			kosik['polozky'] += Product.objects.get(id=pid)
+		for polozka in kosik['polozky']:
+			kosik['soucet'] += polozka.cost
+		kosik['pocet'] = len(kosik['polozky'])
+	
+	return kosik
+
+#                                                                                                HOME
+def home(request):
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
+	
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
