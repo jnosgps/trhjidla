@@ -33,7 +33,7 @@ def tryToGetBasket(request):
 	
 	if productIds:
 		for pid in productIds:
-			kosik['polozky'] += Product.objects.get(id=pid)
+			kosik['polozky'].add(Product.objects.get(id=pid))
 		for polozka in kosik['polozky']:
 			kosik['soucet'] += polozka.cost
 		kosik['pocet'] = len(kosik['polozky'])
