@@ -55,29 +55,9 @@ def home(request):
 
 #                                                                                                IMPRESSUM
 def impressum(request):
-	m_id = {}
-	member = {}
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
 	
-	try:
-		m_id = request.session['member_id']
-	except KeyError:
-		pass
-	
-	if m_id:
-		member = Member.objects.get(id=m_id)
-		member.updateActive()
-	
-	order = {}
-	try:
-		order = request.session['order']
-	except KeyError:
-		pass
-	
-	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
-	if order:
-		kosik['hodnota'] = order['total_cost']
-		kosik['pocetPolozek'] = len(order['items'])
-		kosik['polozky'] = order['items']
 	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
@@ -89,8 +69,8 @@ def impressum(request):
 
 #                                                                                                PRODUCERS LIST
 def producers_list(request, kategorie='fastfood', razeni='az'):
-	m_id = {}
-	member = {}
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
 	
 	katfam = {
 		'fastfood': u'Rychlé občerstvení',
@@ -107,26 +87,6 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'direct': '/static/img/svg/fresh-carrot.svg',
 	}
 	
-	try:
-		m_id = request.session['member_id']
-	except KeyError:
-		pass
-	
-	if m_id:
-		member = Member.objects.get(id=m_id)
-		member.updateActive()
-	
-	order = {}
-	try:
-		order = request.session['order']
-	except KeyError:
-		pass
-	
-	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
-	if order:
-		kosik['hodnota'] = order['total_cost']
-		kosik['pocetPolozek'] = len(order['items'])
-		kosik['polozky'] = order['items']
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
@@ -149,8 +109,8 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 
 #                                                                                                PRODUCTS LIST
 def products_list(request, kategorie='fastfood', razeni='az'):
-	m_id = {}
-	member = {}
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
 	
 	katfam = {
 		'fastfood': u'Rychlé občerstvení',
@@ -167,26 +127,6 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'direct': '/static/img/svg/fresh-carrot.svg',
 	}
 	
-	try:
-		m_id = request.session['member_id']
-	except KeyError:
-		pass
-	
-	if m_id:
-		member = Member.objects.get(id=m_id)
-		member.updateActive()
-	
-	order = {}
-	try:
-		order = request.session['order']
-	except KeyError:
-		pass
-	
-	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
-	if order:
-		kosik['hodnota'] = order['total_cost']
-		kosik['pocetPolozek'] = len(order['items'])
-		kosik['polozky'] = order['items']
 	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
@@ -211,8 +151,8 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	})
 
 def product_detail(request, pk):
-	m_id = {}
-	member = {}
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
 	
 	katfam = {
 		'fastfood': u'Rychlé občerstvení',
@@ -229,27 +169,6 @@ def product_detail(request, pk):
 		'direct': '/static/img/svg/fresh-carrot.svg',
 	}
 	
-	try:
-		m_id = request.session['member_id']
-	except KeyError:
-		pass
-	
-	if m_id:
-		member = Member.objects.get(id=m_id)
-		member.updateActive()
-	
-	order = {}
-	try:
-		order = request.session['order']
-	except KeyError:
-		pass
-	
-	kosik = { 'hodnota': 0, 'pocetPolozek': 0 }
-	if order:
-		kosik['hodnota'] = order['total_cost']
-		kosik['pocetPolozek'] = len(order['items'])
-		kosik['polozky'] = order['items']
-	product = Product.objects.get(pk=pk)
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/product_detail_view.html', {
@@ -293,25 +212,22 @@ def algorythmize_text(request):
 		return HttpResponse('error')
 
 def addToCart_post(request):
-	if 'order' not in request.session:
-		order = {'items': [], 'total_cost': 0}
+	if 'items' not in request.session:
+		items = []
 	else:
-		order = request.session['order']
+		items = request.session['items']
 	
-	order['items'] += request.POST['productId']
-	order['total_cost'] += int(request.POST['productValue'])
-	request.session['order'] = order
+	items += request.POST['productId']
+	request.session['items'] = items
 	
 	return HttpResponse("Successfully added to cart!")
 
 def cartItemRemove_get(request, pk):
-	if 'order' not in request.session:
+	if 'items' not in request.session:
 		return HttpResponse("No cart to remove item from!")
 	
-	order = request.session['order']
-	i = Product.objects.get(pk=pk)
-	order['items'].remove(pk)
-	order['total_cost'] -= i.cost
-	request.session['order'] = order
+	items = request.session['items']
+	items.remove(pk)
+	request.session['items'] = items
 	
 	return HttpResponse("Successfully removed from cart!")
