@@ -6,6 +6,21 @@ from django.http import HttpResponse
 from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo
 import hashlib
 
+katfam = {
+	'fastfood': u'Rychlé občerstvení',
+	'freshfood': u'Zdravé jídlo',
+	'sweets': u'Zákusky',
+	'raws': u'Suroviny',
+	'direct': u'Přímý prodej',
+}
+katimg = {
+	'fastfood': '/static/img/svg/hamburger.svg',
+	'freshfood': '/static/img/svg/fresh-carrot.svg',
+	'sweets': '/static/img/svg/cake.svg',
+	'raws': '/static/img/svg/cucumber.svg',
+	'direct': '/static/img/svg/fresh-carrot.svg',
+}
+
 def tryToGetMember(request):
 	member = {}
 	m_id = {}
@@ -75,21 +90,6 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
 	
-	katfam = {
-		'fastfood': u'Rychlé občerstvení',
-		'freshfood': u'Zdravé jídlo',
-		'sweets': u'Zákusky',
-		'raws': u'Suroviny',
-		'direct': u'Přímý prodej',
-	}
-	katimg = {
-		'fastfood': '/static/img/svg/hamburger.svg',
-		'freshfood': '/static/img/svg/fresh-carrot.svg',
-		'sweets': '/static/img/svg/cake.svg',
-		'raws': '/static/img/svg/cucumber.svg',
-		'direct': '/static/img/svg/fresh-carrot.svg',
-	}
-	
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
@@ -114,21 +114,6 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 def products_list(request, kategorie='fastfood', razeni='az'):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
-	
-	katfam = {
-		'fastfood': u'Rychlé občerstvení',
-		'freshfood': u'Zdravé jídlo',
-		'sweets': u'Zákusky',
-		'raws': u'Suroviny',
-		'direct': u'Přímý prodej',
-	}
-	katimg = {
-		'fastfood': '/static/img/svg/hamburger.svg',
-		'freshfood': '/static/img/svg/fresh-carrot.svg',
-		'sweets': '/static/img/svg/cake.svg',
-		'raws': '/static/img/svg/cucumber.svg',
-		'direct': '/static/img/svg/fresh-carrot.svg',
-	}
 	
 	infotext = PageInfo.objects.get().info_text
 	
@@ -156,21 +141,6 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 def product_detail(request, pk):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
-	
-	katfam = {
-		'fastfood': u'Rychlé občerstvení',
-		'freshfood': u'Zdravé jídlo',
-		'sweets': u'Zákusky',
-		'raws': u'Suroviny',
-		'direct': u'Přímý prodej',
-	}
-	katimg = {
-		'fastfood': '/static/img/svg/hamburger.svg',
-		'freshfood': '/static/img/svg/fresh-carrot.svg',
-		'sweets': '/static/img/svg/cake.svg',
-		'raws': '/static/img/svg/cucumber.svg',
-		'direct': '/static/img/svg/fresh-carrot.svg',
-	}
 	
 	infotext = PageInfo.objects.get().info_text
 	
