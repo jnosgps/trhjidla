@@ -21,7 +21,7 @@ def tryToGetMember(request):
 
 def tryToGetBasket(request):
 	kosik = {
-		'polozky': {},
+		'polozky': [],
 		'soucet': 0,
 		'pocet': 0
 	}
