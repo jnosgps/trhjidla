@@ -21,7 +21,7 @@ def tryToGetMember(request):
 
 def tryToGetBasket(request):
 	kosik = {
-		'polozky': (),
+		'polozky': [],
 		'soucet': 0,
 		'pocet': 0
 	}
@@ -33,7 +33,7 @@ def tryToGetBasket(request):
 	
 	if productIds:
 		for pid in productIds:
-			kosik['polozky'] += Product.objects.get(id=pid)
+			kosik['polozky'].extend(Product.objects.get(id=pid))
 		for polozka in kosik['polozky']:
 			kosik['soucet'] += polozka.cost
 		kosik['pocet'] = len(kosik['polozky'])
