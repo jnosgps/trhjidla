@@ -33,7 +33,10 @@ def tryToGetBasket(request):
 	
 	if productIds:
 		for pid in productIds:
-			kosik['polozky'].extend(Product.objects.get(id=pid))
+			try:
+				kosik['polozky'].extend(Product.objects.get(id=pid))
+			except TypeError:
+				kosik['polozky'].append(Product.objects.get(id=pid))
 		for polozka in kosik['polozky']:
 			kosik['soucet'] += polozka.cost
 		kosik['pocet'] = len(kosik['polozky'])
