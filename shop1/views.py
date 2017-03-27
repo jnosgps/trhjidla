@@ -266,3 +266,8 @@ def cart2ItemRemove_get(request, pk):
 	request.session['items2'] = items
 	
 	return HttpResponse("Successfully removed from cart 2!")
+
+def cart2UpdateTime_post(request):
+	time = request.POST['newtime']
+	request.session['items2-time'] = time
+	return HttpResponse("Time change successfull!")

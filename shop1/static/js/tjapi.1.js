@@ -51,6 +51,14 @@ $('.addToCart').on('click', function() {
 		else alert("Data: " + data + "\nStatus:" + status);
 	});
 });
+$('.addToCart2').on('click', function() {
+	var postdata = {'productId': $(this).data('productid'), 'productValue': $(this).data('productvalue'), 'csrfmiddlewaretoken': csrf_token};
+	//console.log(postdata)
+	$.post('/shop1/addToCart2/', postdata, function(data, status) {
+		if (status == 'success') location.reload(true);
+		else alert("Data: " + data + "\nStatus:" + status);
+	});
+});
 
 
 $('.cartItemRemove').on('click', function() {
@@ -58,6 +66,22 @@ $('.cartItemRemove').on('click', function() {
 	$.get('/shop1/cartItemRemove/' + itemId + '/', function(data, status) {
 		if (status == 'success') location.reload(true);
 		else alert('Data: ' + data + '\nStatus: ' + status);
+	});
+});
+$('.cart2ItemRemove').on('click', function() {
+	var itemId = $(this).data('itemid');
+	$.get('/shop1/cart2ItemRemove/' + itemId + '/', function(data, status) {
+		if (status == 'success') location.reload(true);
+		else alert('Data: ' + data + '\nStatus: ' + status);
+	});
+});
+
+$('#datetimepicker').datetimepicker();
+$('#cart2UpdateTime').on('click', function() {
+	var postdata = {'newtime': $('#datetimepicker').val(), 'csrfmiddlewaretoken': csrf_token};
+	$.post('/shop1/cart2UpdateTime/', postdata, function(data, status) {
+		if (status == 'success') location.reload(true);
+		else alert("Data: " + data + "\nStatus: " + status);
 	});
 });
 

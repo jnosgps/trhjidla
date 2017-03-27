@@ -121,6 +121,7 @@
 											<li><a href="{% url 'product_detail' pk=produkt.pk %}">{{ produkt }}</a> <a class="cartItemRemove" data-itemid="{{ produkt.id }}" href="#"><i class="fa fa-close"></i></a></li>
 										{% endfor %}
 									{% endif %}
+									<li><input id="datetimepicker" type="text"> <img src="{% static '/img/svg/foodtime.svg' %}" width="32" height="32" id="cart2UpdateTime"></li>
 								</ul>
 						</div>
 					</div>
