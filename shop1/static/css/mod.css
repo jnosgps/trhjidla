@@ -158,6 +158,10 @@
 	color: #43ac3e;
 }
 
+.products-single a img {
+	padding-right: 3px;
+	padding-top: 10px;
+}
 .products-single a h2 {
 	padding-bottom: 2px;
 	margin-bottom: 2px;
