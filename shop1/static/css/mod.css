@@ -176,3 +176,9 @@
 	border-color: #43ac3e;
 	color: #000;
 }
+
+.kosik-menu a, .kosik-menu a:visited, .kosik-menu a:link, .kosik-menu a:hover, .kosik-menu:hover a, .kosik-menu:hover a:visited, .kosik-menu:hover a:link, .kosik-menu:hover a:hover {
+	background: #ddd;
+	color: #43ac3e;
+	text-decoration: none;
+}
