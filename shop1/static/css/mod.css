@@ -147,6 +147,9 @@
 	width: 100%;
 	height: 100%;
 }
+.product-details a img {
+	padding-right: 3px;
+}
 
 
 .backbutton {
