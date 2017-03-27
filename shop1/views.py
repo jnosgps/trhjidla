@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo
 import hashlib
+from django.utils import timezone
 
 katfam = {
 	'fastfood': u'Rychlé občerstvení',
@@ -58,16 +59,47 @@ def tryToGetBasket(request):
 	
 	return kosik
 
+def tryToGetAfterBasket(request):
+	kosik = {
+		'polozky': [],
+		'soucet': 0,
+		'pocet': 0,
+		'cas': {}
+	}
+	
+	productIds = []
+	try:
+		productIds = request.session['items2']
+	except KeyError:
+		pass
+		
+	if productIds:
+		for pid in productIds:
+			try:
+				kosik['polozky'].extend(Product.objects.get(id=pid))
+			except TypeError:
+				kosik['polozky'].append(Product.objects.get(id=pid))
+		for polozka in kosik['polozky']:
+			kosik['soucet'] += polozka.cost
+		kosik['pocet'] = len(kosik['polozky'])
+		try:
+			kosik['cas'] = request.session['items2-time']
+		except KeyError:
+			pass
+	
+	return kosik
 #                                                                                                HOME
 def home(request):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
 	
 	return render(request, 'shop1/home_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'kosik2': timekosik,
 		'infotext': infotext,
 	})
 
@@ -75,12 +107,14 @@ def home(request):
 def impressum(request):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
 	
 	pi = PageInfo.objects.get()
 	
 	return render(request, 'shop1/impressum_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'kosik2': timekosik,
 		'infotext': pi.info_text,
 		'pi': pi,
 	})
@@ -89,6 +123,7 @@ def impressum(request):
 def producers_list(request, kategorie='fastfood', razeni='az'):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
 		
@@ -102,6 +137,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	return render(request, 'shop1/producers_list_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
 		'kategorie_imgsrc': katimg[kategorie],
 		'katkat': kategorie,
@@ -114,6 +150,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 def products_list(request, kategorie='fastfood', razeni='az'):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
 	
@@ -130,6 +167,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
 		'kategorie_imgsrc': katimg[kategorie],
 		'razeni': razeni,
@@ -141,6 +179,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 def product_detail(request, pk):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
 	
@@ -149,6 +188,7 @@ def product_detail(request, pk):
 	return render(request, 'shop1/product_detail_view.html', {
 		'member': member,
 		'kosik': kosik,
+		'kosik2': timekosik,
 		'kategorie_familiar': katfam[product.category.name],
 		'kategorie_imgsrc': katimg[product.category.name],
 		'produkt': product,
@@ -205,3 +245,24 @@ def cartItemRemove_get(request, pk):
 	request.session['items'] = items
 	
 	return HttpResponse("Successfully removed from cart!")
+
+def addToCart2_post(request):
+	if 'items2' not in request.session:
+		items = []
+	else:
+		items = request.session['items2']
+	
+	items += request.POST['productId']
+	request.session['items2'] = items
+	
+	return HttpResponse("Successfully added to cart 2!")
+
+def cart2ItemRemove_get(request, pk):
+	if 'items2' not in request.session:
+		return HttpResponse("No cart 2 to remove item from!")
+	
+	items = request.session['items2']
+	items.remove(pk)
+	request.session['items2'] = items
+	
+	return HttpResponse("Successfully removed from cart 2!")
