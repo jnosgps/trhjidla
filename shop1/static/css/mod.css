@@ -170,3 +170,9 @@
 	margin-top: 0;
 	padding-right: 25px;
 }
+
+.kosik-menu, .kosik-menu:hover {
+	background: #ddd;
+	border-color: #43ac3e;
+	color: #000;
+}

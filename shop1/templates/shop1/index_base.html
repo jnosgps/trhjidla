@@ -102,7 +102,7 @@
 								<img id="ccart-image" src="{% static '/img/ikony/basket-green.svg' %}" width="24" height="24">
 								<span class="product-count">{{ kosik.pocet }} | {{ kosik2.pocet }}</span>
 							</a>
-							<div class="dropdown-menu" aria-labelledby="dropdownKosik">
+							<div class="dropdown-menu kosik-menu" aria-labelledby="dropdownKosik">
 								<ul>
 									{% if not kosik.polozky %}
 										<li>Nic</li>
