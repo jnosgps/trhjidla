@@ -15,11 +15,18 @@ katfam = {
 	'direct': u'Přímý prodej',
 }
 katimg = {
-	'fastfood': '/static/img/svg/hamburger.svg',
-	'freshfood': '/static/img/svg/fresh-carrot.svg',
-	'sweets': '/static/img/svg/cake.svg',
-	'raws': '/static/img/svg/cucumber.svg',
-	'direct': '/static/img/svg/fresh-carrot.svg',
+	'fastfood': '/static/img/dlazdice/fastfood.svg',
+	'freshfood': '/static/img/dlazdice/freshfood.svg',
+	'sweets': '/static/img/dlazdice/sweets.svg',
+	'raws': '/static/img/dlazdice/raws.svg',
+	'direct': '/static/img/dlazdice/direct.svg',
+}
+katimg2 = {
+	'fastfood': '/static/img/dlazdice_green/fastfood.svg',
+	'freshfood': '/static/img/dlazdice_green/freshfood.svg',
+	'sweets': '/static/img/dlazdice_green/sweets.svg',
+	'raws': '/static/img/dlazdice_green/raws.svg',
+	'direct': '/static/img/dlazdice_green/direct.svg',
 }
 
 def tryToGetMember(request):
@@ -169,7 +176,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'kosik': kosik,
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
-		'kategorie_imgsrc': katimg[kategorie],
+		'kategorie_imgsrc': katimg2[kategorie],
 		'razeni': razeni,
 		'prodlist': produkty,
 		'producent': producent,
@@ -190,7 +197,7 @@ def product_detail(request, pk):
 		'kosik': kosik,
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[product.category.name],
-		'kategorie_imgsrc': katimg[product.category.name],
+		'kategorie_imgsrc': katimg2[product.category.name],
 		'produkt': product,
 		'infotext': infotext,
 	})
