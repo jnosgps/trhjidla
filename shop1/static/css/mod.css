@@ -17,7 +17,7 @@
 /*============================== MAPA STRANKY ============================*/
 .site-branding-area p i.fa { font-size: 32px; margin-top: 3px; }
 .site-branding-area p img { padding-top: -14px; margin-top: -14px; }
-.shopping-item img { padding: -2px 5px 2px 1px; }
+#ccart-image { padding: -4px 10px 5px 2px; }
 
 /*============================== DLAZDICE HOME_CATEGORY ============================*/
 .home-category-img { position: relative; height: 75%; width: 75%; padding: 5px 5px 5px 5px; border-radius: 20px; }
