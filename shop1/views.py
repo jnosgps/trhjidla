@@ -146,7 +146,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'kosik': kosik,
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
-		'kategorie_imgsrc': katimg[kategorie],
+		'kategorie_imgsrc': katimg2[kategorie],
 		'katkat': kategorie,
 		'razeni': razeni,
 		'restlist': restaurace,
