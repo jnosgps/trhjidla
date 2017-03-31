@@ -90,7 +90,7 @@ class Order(models.Model):
 		registered = ''
 		if self.member:
 			registered = ' ('+self.member.login+')'
-		return self.customer.name + registered + ' [' + total_products + ']'
+		return self.customer.name + registered + ' [' + str(total_products) + ']'
 
 class OrderItem(models.Model):
 	order = models.ForeignKey('shop1.Order')
