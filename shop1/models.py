@@ -98,7 +98,7 @@ class OrderItem(models.Model):
 	quantity = models.IntegerField(default=1)
 	
 	def __unicode__(self):
-		return self.quantity + 'x ' + self.product.name
+		return str(self.quantity) + 'x ' + self.product.name
 
 class PageInfo(models.Model):
 	info_text = models.TextField()
