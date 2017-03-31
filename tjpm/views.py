@@ -46,7 +46,7 @@ def dashboard(request):
 			except TypeError:
 				objednavky.append(objednavka)
 	
-	print objednavky
+	print objednavky[0]
 	return render(request, 'tjpm/dashboard.html', {
 		'producent': p,
 		'objednavky': objednavky,
