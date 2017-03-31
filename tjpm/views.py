@@ -27,7 +27,7 @@ def dashboard(request):
 		return login_form(request)
 	
 	objednavky = []
-	orders = Order.objects.filter(orderitem__product__producer__pk=p.pk).distinct()
+	orders = Order.objects.filter(orderitem__product__producer__pk=p.pk).distinct().filter(status=0)
 	if orders:
 		for o in orders:
 			orderitems = OrderItem.objects.filter(order__pk=o.pk).distinct()
