@@ -37,9 +37,9 @@ def dashboard(request):
 			}
 			for oi in orderitems:
 				try:
-					objednavka['polozky'].extend()
+					objednavka['polozky'].extend(oi)
 				except TypeError:
-					objednavka['polozky'].append()
+					objednavka['polozky'].append(oi)
 			print objednavka
 			try:
 				objednavky.extend(objednavka)
