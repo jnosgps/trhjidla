@@ -43,11 +43,11 @@ def dashboard(request):
 			print objednavka
 			try:
 				objs = objednavky
-				objs.extend(objednavka)
+				objs.extend(objednavka.copy())
 				objednavky = objs
 			except TypeError:
 				objs = objednavky
-				objs.append(objednavka)
+				objs.append(objednavka.copy())
 				objednavky = objs
 	
 	print objednavky[0]
