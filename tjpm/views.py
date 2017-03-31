@@ -33,13 +33,20 @@ def dashboard(request):
 			orderitems = OrderItem.objects.filter(order__pk=o.pk).distinct()
 			objednavka = {
 				'objednavka': o,
-				'polozky': orderitems
+				'polozky': []
 			}
+			for oi in orderitems:
+				try:
+					objednavka['polozky'].extend()
+				except TypeError:
+					objednavka['polozky'].append()
+			print objednavka
 			try:
 				objednavky.extend(objednavka)
 			except TypeError:
 				objednavky.append(objednavka)
 	
+	print objednavky
 	return render(request, 'tjpm/dashboard.html', {
 		'producent': p,
 		'objednavky': objednavky,
