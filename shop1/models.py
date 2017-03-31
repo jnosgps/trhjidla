@@ -83,6 +83,7 @@ class Order(models.Model):
 	order_date = models.DateTimeField(default=timezone.now)
 	delivery_time = models.DateTimeField()
 	total_cost = models.IntegerField(default=0)
+	status = models.IntegerField(default=0)
 	
 	def __unicode__(self):
 		total_products = len(OrderItem.objects.filter(order=self.pk))
