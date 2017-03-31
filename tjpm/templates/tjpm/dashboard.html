@@ -15,8 +15,8 @@
 				<div class="col-md-6">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">{{ obj['objednavka'].total_cost }}
-							<p class="category">{{ obj['objednavka'].delivery_time }} (ID: #{{ obj['objednavka'].pk }})</p>
+							<h4 class="title">{{ obj.objednavka.total_cost }}
+							<p class="category">{{ obj.objednavka.delivery_time }} (ID: #{{ obj.objednavka.pk }})</p>
 						</div>
 						<div class="content">
 							<table class="table table-hover">
@@ -26,7 +26,7 @@
 									<th>Cena</th>
 								</thead>
 								<tbody>
-									{% for item in obj['polozky'] %}
+									{% for item in obj.polozky %}
 										<tr>
 											<td>{{ item.quantity }}</td>
 											<td>{{ item.product }}</td>
