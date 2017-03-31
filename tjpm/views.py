@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 from shop1.models import Producer
 
-def dashboard(request):
+def getProducer(request):
 	p = {}
 	try:
 		p = Producer.objects.get(id=request.session['producer_id'])
@@ -19,11 +19,16 @@ def dashboard(request):
 		except:
 			pass
 
-		return render(request, 'tjpm/dashboard.html', {
-			'producent': p,
-		})
-	else:
+	return p
+
+def dashboard(request):
+	p = getProducer(request)
+	if not p:
 		return login_form(request)
+	
+	return render(request, 'tjpm/dashboard.html', {
+		'producent': p,
+	})
 
 def login_form(request):
 		return render(request, 'tjpm/login.html')
