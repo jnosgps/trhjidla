@@ -42,9 +42,9 @@ def dashboard(request):
 					objednavka['polozky'].append(oi)
 			print objednavka
 			try:
-				objednavky.extend(objednavka.deepcopy())
+				objednavky.extend(objednavka.copy())
 			except TypeError:
-				objednavky.append(objednavka.deepcopy())
+				objednavky.append(objednavka.copy())
 	
 	print objednavky
 	return render(request, 'tjpm/dashboard.html', {
