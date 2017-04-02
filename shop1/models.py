@@ -48,6 +48,7 @@ class Product(models.Model):
 	time_param = models.IntegerField(default=0)
 	cost = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='img/products', blank=True, null=True)
+	label_tags = models.ManyToManyField('shop1.LabelTag')
 	
 	def __unicode__(self):
 		return self.name
@@ -122,10 +123,3 @@ class LabelTag(models.Model):
 
 	def __unicode__(self):
 		return self.label
-
-class LTHolder(models.Model):
-	label = models.ForeignKey('shop1.LabelTag')
-	product = models.ForeignKey('shop1.Product')
-
-	def __unicode__(self):
-		return product.name + ' #' + label.label
