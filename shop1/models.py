@@ -116,3 +116,16 @@ class PageInfo(models.Model):
 	image5 = models.FileField(upload_to='img/impressum', blank=True, null=True)
 	image6 = models.FileField(upload_to='img/impressum', blank=True, null=True)
 	image7 = models.FileField(upload_to='img/impressum', blank=True, null=True)
+
+class LabelTag(models.Model):
+	label = models.TextField()
+
+	def __unicode__(self):
+		return self.label
+
+class LTHolder(models.Model):
+	label = models.ForeignKey('shop1.LabelTag')
+	product = models.ForeignKey('shop1.Product')
+
+	def __unicode__(self):
+		return product.name + ' #' + label.label
