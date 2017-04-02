@@ -119,7 +119,7 @@ class PageInfo(models.Model):
 	image7 = models.FileField(upload_to='img/impressum', blank=True, null=True)
 
 class LabelTag(models.Model):
-	label = models.TextField()
+	label = models.CharField(max_length=64)
 
 	def __unicode__(self):
 		return self.label
