@@ -28,7 +28,7 @@
 		<div class="col-md-8 col-sm-6">
 			<div class="product-details">
 				<div class="row">
-					{{ produkt.name }}
+					<h2>{{ produkt.name }}</h2>
 				</div>
 				<div class="row">
 					{{ produkt.description }}
@@ -42,7 +42,7 @@
 					{% endfor %}
 				</div>
 				<div class="row">
-					{{ produkt.cost }},- Kč
+					<h3>{{ produkt.cost }}<small>,- Kč</small></h3>
 				</div>
 				<div class="footer">
 					<p>

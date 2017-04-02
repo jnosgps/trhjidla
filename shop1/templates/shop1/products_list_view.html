@@ -63,7 +63,7 @@
 							</a>
 						</div>
 						<a href="{% url 'product_detail' pk=produkt.pk %}"><h2>{{ produkt.name }}</h2></a>
-						<div class="row">
+						<div class="row ltrow">
 							{% for lt in produkt.label_tags.all %}
 								<span class="label label-default">{{ lt }}</span>
 							{% endfor %}
