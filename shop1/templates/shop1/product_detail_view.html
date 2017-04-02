@@ -37,7 +37,7 @@
 					{{ produkt.producer.name }}
 				</div>
 				<div class="row">
-					{% for lt in produkt.label_tags.all() %}
+					{% for lt in produkt.label_tags.all %}
 						<span class="label label-default">{{ lt }}</span>
 					{% endfor %}
 				</div>
