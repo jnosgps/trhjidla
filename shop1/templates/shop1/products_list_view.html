@@ -41,7 +41,7 @@
 						{{ producent.address }}
 					</div>
 					<div class="row">
-						Štítky
+						Stitky
 					</div>
 				</div>
 			</div>
@@ -63,6 +63,11 @@
 							</a>
 						</div>
 						<a href="{% url 'product_detail' pk=produkt.pk %}"><h2>{{ produkt.name }}</h2></a>
+						<div class="row">
+							{% for lt in produkt.label_tags %}
+								<span class="label label-default">{{ lt }}</span>
+							{% endfor %}
+						</div>
 						<div class="row">
 							<h3>{{ produkt.cost }},- Kč</h3>
 								<p>

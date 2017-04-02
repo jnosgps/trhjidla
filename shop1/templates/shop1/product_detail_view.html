@@ -37,7 +37,9 @@
 					{{ produkt.producer.name }}
 				</div>
 				<div class="row">
-					Štítky
+					{% for lt in produkt.label_tags %}
+						<span class="label label-default">{{ lt }}</span>
+					{% endfor %}
 				</div>
 				<div class="row">
 					{{ produkt.cost }},- Kč
