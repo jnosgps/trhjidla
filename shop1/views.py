@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo
+from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo, LabelTag
 import hashlib
 from django.utils import timezone
 
@@ -162,6 +162,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	infotext = PageInfo.objects.get().info_text
 	
 	producent = {}
+	ptags = {}
 	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()
@@ -170,6 +171,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	else:
 		produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').distinct()
 		producent = Producer.objects.get(pk=razeni)
+		ptags = LabelTag.objects.filter(product__producer__pk=razeni).distinct()
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
@@ -180,6 +182,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'razeni': razeni,
 		'prodlist': produkty,
 		'producent': producent,
+		'ptags': ptags,
 		'infotext': infotext,
 	})
 
