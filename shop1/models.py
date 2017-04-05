@@ -14,7 +14,6 @@ class Category(models.Model):
 
 class FoodType(models.Model):
 	name = models.CharField(max_length=64)
-	position = models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return self.name
