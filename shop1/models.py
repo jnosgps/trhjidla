@@ -56,7 +56,7 @@ class Product(models.Model):
 	cost = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='img/products', blank=True, null=True)
 	label_tags = models.ManyToManyField('shop1.LabelTag')
-	food_type = models.ForeignKey('shop1.FoodType')
+	food_type = models.ForeignKey('shop1.FoodType', blank=True, null=True, default=None)
 	
 	def __unicode__(self):
 		return self.name
