@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Producer, Product, Customer, Member, Order, OrderItem, PageInfo, LabelTag
+from .models import Category, Producer, Product, Customer, Member, Order, OrderItem, PageInfo, LabelTag, FoodType
 
 admin.site.register(Category)
 admin.site.register(Producer)
@@ -10,3 +10,4 @@ admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(PageInfo)
 admin.site.register(LabelTag)
+admin.site.register(FoodType)
