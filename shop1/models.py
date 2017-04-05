@@ -13,8 +13,8 @@ class Category(models.Model):
 		return self.name
 
 class FoodType(models.Model):
-	ftype = models.CharField(max_length=32)
-	name = models.CharField(max_length=64)
+	ftype = models.CharField(max_length=32, default="a")
+	name = models.CharField(max_length=64, default="A vole")
 
 	def __unicode__(self):
 		return self.name
