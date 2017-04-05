@@ -24,7 +24,7 @@
 						{% if producent.picture %}
 							<img src="{{ producent.picture.url }}">
 						{% else %}
-							<img src="/media/producers_img/producer-nologo.png">
+							<img src="{{ noimg_src }}">
 						{% endif %}
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 								{% if produkt.picture %}
 									<img src="{{ produkt.picture.url }}">
 								{% else %}
-									<img src="/media/producers_img/producer-nologo.png">
+									<img src="{{ noimg_src }}">
 								{% endif %}
 							</a>
 						</div>

@@ -147,6 +147,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
 		'kategorie_imgsrc': katimg2[kategorie],
+		'noimg_src': katimg[kategorie],
 		'katkat': kategorie,
 		'razeni': razeni,
 		'restlist': restaurace,
@@ -180,6 +181,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[kategorie],
 		'kategorie_imgsrc': katimg2[kategorie],
+		'noimg_src': katimg[kategorie],
 		'razeni': razeni,
 		'prodlist': produkty,
 		'producent': producent,
@@ -202,6 +204,7 @@ def product_detail(request, pk):
 		'kosik2': timekosik,
 		'kategorie_familiar': katfam[product.category.name],
 		'kategorie_imgsrc': katimg2[product.category.name],
+		'noimg_src': katimg[product.category.name],
 		'produkt': product,
 		'infotext': infotext,
 	})
