@@ -163,6 +163,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	
 	producent = {}
 	ptags = {}
+	typed_products = {}
 	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()

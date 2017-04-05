@@ -12,6 +12,13 @@ class Category(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class FoodType(models.Model):
+	name = models.CharField(max_length=64)
+	position = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.name
+
 class Producer(models.Model):
 	name = models.CharField(max_length=64)
 	address = models.CharField(max_length=64)
@@ -49,6 +56,7 @@ class Product(models.Model):
 	cost = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='img/products', blank=True, null=True)
 	label_tags = models.ManyToManyField('shop1.LabelTag')
+	food_type = models.ForeignKey('shop1.FoodType')
 	
 	def __unicode__(self):
 		return self.name
