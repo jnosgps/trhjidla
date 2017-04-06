@@ -55,7 +55,7 @@ class Product(models.Model):
 	time_param = models.IntegerField(default=0)
 	cost = models.IntegerField(default=0)
 	picture = models.ImageField(upload_to='img/products', blank=True, null=True)
-	label_tags = models.ManyToManyField('shop1.LabelTag')
+	label_tags = models.ManyToManyField('shop1.LabelTag', blank=True, null=True, default=None)
 	food_type = models.ForeignKey('shop1.FoodType', blank=True, null=True, default=None)
 	
 	def __unicode__(self):
