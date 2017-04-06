@@ -93,12 +93,15 @@
 	</div>
 	{% if napoje %}
 		<div class="row">
+			<div class="row">
+				<h3>Nápoje</h3>
+			</div>
 			{% for napoj in napoje %}
 				<div class="col-md-3 col-sm-6">
 					<div class="products-single">
 						<div class="thumbnail">
 							<a href="{% url 'product_detail' pk=napoj.pk %}">
-								{% if produkt.picture %}
+								{% if napoj.picture %}
 									<img src="{{ napoj.picture.url }}">
 								{% else %}
 									<img src="{{ noimg_src }}">
