@@ -13,6 +13,7 @@ katfam = {
 	'sweets': u'Zákusky',
 	'raws': u'Suroviny',
 	'direct': u'Přímý prodej',
+	'drinks': u'Nápoje',
 }
 katimg = {
 	'fastfood': '/static/img/dlazdice/fastfood.svg',
@@ -20,6 +21,7 @@ katimg = {
 	'sweets': '/static/img/dlazdice/sweets.svg',
 	'raws': '/static/img/dlazdice/raws.svg',
 	'direct': '/static/img/dlazdice/direct.svg',
+	'drinks': '/static/img/dlazdice/fastfood.svg',
 }
 katimg2 = {
 	'fastfood': '/static/img/dlazdice_green/fastfood.svg',
@@ -27,6 +29,7 @@ katimg2 = {
 	'sweets': '/static/img/dlazdice_green/sweets.svg',
 	'raws': '/static/img/dlazdice_green/raws.svg',
 	'direct': '/static/img/dlazdice_green/direct.svg',
+	'drinks': '/static/img/dlazdice_green/fastfood.svg',
 }
 
 def tryToGetMember(request):
@@ -198,7 +201,7 @@ def product_detail(request, pk):
 	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
-	
+
 	product = Product.objects.get(pk=pk)
 	
 	return render(request, 'shop1/product_detail_view.html', {
