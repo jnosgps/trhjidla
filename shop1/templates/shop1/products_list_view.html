@@ -91,4 +91,37 @@
 		{% endif %}
 			
 	</div>
+	{% if napoje %}
+		<div class="row">
+			{% for napoj in napoje %}
+				<div class="col-md-3 col-sm-6">
+					<div class="products-single">
+						<div class="thumbnail">
+							<a href="{% url 'product_detail' pk=napoj.pk %}">
+								{% if produkt.picture %}
+									<img src="{{ napoj.picture.url }}">
+								{% else %}
+									<img src="{{ noimg_src }}">
+								{% endif %}
+							</a>
+						</div>
+						<a href="{% url 'product_detail' pk=napoj.pk %}"><h2>{{ napoj.name }}</h2></a>
+						<div class="row">
+							<h3>{{ napoj.cost }},- Kč</h3>
+								<p>
+									<a href="#" class="addToCart btn btn-success btn-sm" data-productId="{{ napoj.id }}" data-productValue="{{ napoj.cost }}" >
+										<img src="{% static '/img/ikony/basket.svg' %}" width="16" height="16"> Přidat do košíku
+									</a>
+								</p>
+								<p>
+									<a href="#" class="addToCart2 btn btn-success btn-sm" data-productId="{{ napoj.id }}" data-productValue="{{ napoj.cost }}" >
+										<img src="{% static '/img/ikony/foodtime.svg' %}" width="16" height="16"> Přidat do časového košíku
+									</a>
+								</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
 {% endblock %}
