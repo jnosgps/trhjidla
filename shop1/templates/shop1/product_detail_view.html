@@ -37,9 +37,11 @@
 					{{ produkt.producer.name }}
 				</div>
 				<div class="row">
-					{% for lt in produkt.label_tags.all %}
-						<span class="label label-default">{{ lt }}</span>
-					{% endfor %}
+					{% if produkt.category.name != 'drinks' %}
+						{% for lt in produkt.label_tags.all %}
+							<span class="label label-default">{{ lt }}</span>
+						{% endfor %}
+					{% endif %}
 				</div>
 				<div class="row">
 					<h3>{{ produkt.cost }}<small>,- Kč</small></h3>
