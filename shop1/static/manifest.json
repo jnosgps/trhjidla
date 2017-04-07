@@ -1,15 +1,12 @@
-{
+        {
     "short_name": "trhJídla.cz",
     "name": "trhJídla.cz | Regionální tržnice",
     "background_color": "#43AC3E",
     "theme_color": "#FFFFFF",
     "start_url": "/shop1/",
     "display": "standalone",
-    "icons": [
-        {
-            "src": "/static/img/headlogo.svg",
-            "sizes": "180x82",
-            "type": "image/svg"
-        }
-    ]
+    "icons": [{
+        "src": "/static/img/headlogo.svg",
+        "sizes": "180x82 360x164"
+    }]
 }
