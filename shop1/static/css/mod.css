@@ -171,6 +171,10 @@
 	height: 209px;
 }
 .products-single a h2 {
+	padding-left: auto;
+	padding-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 	padding-bottom: 2px;
 	margin-bottom: 2px;
 	font-size: 120%;
