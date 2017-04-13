@@ -159,8 +159,9 @@
 }
 
 .products-single {
-	border: 1px #222 dotted;
+	border: 1px #999 dotted;
 	border-radius: 5px;
+	padding: 5px;
 }
 
 .products-single a img {
