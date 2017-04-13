@@ -7,7 +7,7 @@ from .models import Category, Producer, Product, Member, Customer, Order, OrderI
 import hashlib
 from django.utils import timezone
 
-from .const import katfam, katimg, katimg2
+from .const import katfam, katimg, katimg2, semafor_barva
 
 def tryToGetMember(request):
 	member = {}
