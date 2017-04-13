@@ -158,6 +158,11 @@
 	color: #43ac3e;
 }
 
+.products-single {
+	border: 1px #222 dotted;
+	border-radius: 5px;
+}
+
 .products-single a img {
 	padding-right: 3px;
 	padding-top: 10px;
