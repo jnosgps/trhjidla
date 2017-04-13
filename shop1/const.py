@@ -24,3 +24,8 @@ katimg2 = {
 	'direct': '/static/img/dlazdice_green/direct.svg',
 	'drinks': '/static/img/dlazdice_green/fastfood.svg',
 }
+semafor_barva = {
+    0: 'red',
+    1: 'yellow',
+    2: 'green',
+}
