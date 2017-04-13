@@ -168,6 +168,11 @@
 	font-size: 120%;
 }
 
+.products-single row {
+	padding: 0;
+	margin: 0;
+}
+
 .products-single h3 {
 	position: relative;
 	float: right;
