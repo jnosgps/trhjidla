@@ -28,7 +28,11 @@
 						</div>
 						<h2><a href="{% url 'products_list' razeni=restaurace.pk kategorie=katkat %}">{{ restaurace.name }}</a></h2>
 						<svg class="semafor">
-							<circle cx="10" cy="10" r="5" fill="{{ semstavy.restaurace__online }}" />
+							{% for stav, barva in semstavy %}
+								{% if restaurace.online == stav %}
+									<circle cx="10" cy="10" r="5" fill="{{ barva }}" />
+								{% endif %}
+							{% endfor %}
 						</svg>
 						<div class="xrow">
 							Štítky
