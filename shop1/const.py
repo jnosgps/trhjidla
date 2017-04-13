@@ -25,7 +25,7 @@ katimg2 = {
 	'drinks': '/static/img/dlazdice_green/fastfood.svg',
 }
 semafor_barva = {
-    '0': 'red',
-    '1': 'yellow',
-    '2': 'green',
+    0: 'red',
+    1: 'yellow',
+    2: 'green',
 }
