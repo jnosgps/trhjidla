@@ -159,7 +159,7 @@
 }
 
 .products-single {
-	border: 1px #999 dotted;
+	border: 1px #999 solid;
 	border-radius: 5px;
 	padding: 5px;
 }
@@ -167,6 +167,7 @@
 .products-single a img {
 	padding-right: 3px;
 	padding-top: 10px;
+	max-height: 209px;
 }
 .products-single a h2 {
 	padding-bottom: 2px;
