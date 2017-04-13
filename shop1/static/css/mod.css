@@ -164,11 +164,14 @@
 	padding: 5px;
 }
 
+.products-single thumbnail {
+	height: 209px;
+}
+
 .products-single a img {
 	padding-right: 3px;
 	padding-top: 10px;
 	max-height: 209px;
-	height: 209px;
 }
 .products-single a h2 {
 	padding-left: auto;
