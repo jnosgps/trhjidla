@@ -11,7 +11,7 @@ def getProducer(request):
 		p = Producer.objects.get(id=request.session['producer_id'])
 		p.updateLastActive()
 	except:
-		return login_form(request)
+		return 0
 	
 	if p:
 		try:
