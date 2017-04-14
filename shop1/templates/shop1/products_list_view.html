@@ -65,12 +65,12 @@
 							</a>
 						</div>
 						<a href="{% url 'product_detail' pk=produkt.pk %}"><h2>{{ produkt.name }}</h2></a>
-						<div class="row ltrow">
+						<div class="xrow ltrow">
 							{% for lt in produkt.label_tags.all %}
 								<span class="label label-default">{{ lt }}</span>
 							{% endfor %}
 						</div>
-						<div class="row">
+						<div class="xrow">
 							<h3>{{ produkt.cost }},- Kč</h3>
 								<p>
 									<a href="#" class="addToCart btn btn-success btn-sm" data-productId="{{ produkt.id }}" data-productValue="{{ produkt.cost }}" >
