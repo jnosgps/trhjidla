@@ -115,10 +115,8 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	infotext = PageInfo.objects.get().info_text
 		
 	if razeni == 'az':
-		#restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('name', '-online').distinct()
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('-online', 'name').distinct()
 	elif razeni == 'top':
-		#restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('-registered_date', '-online').distinct()
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('-online', '-registered_date').distinct()
 	else:
 		restaurace  = Producer.objects.filter(product__category__name=kategorie).order_by('-online').distinct()
