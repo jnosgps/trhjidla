@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo, LabelTag
+from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo, LabelTag, FoodType
 import hashlib
 from django.utils import timezone
 
@@ -147,6 +147,8 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	ptags = {}
 	napoje = {}
 	ost_kat = {}
+	specials = {}
+	foodtypes = {}
 	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()
@@ -158,6 +160,9 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		ptags = LabelTag.objects.filter(product__producer__pk=razeni).distinct()
 		napoje = Product.objects.filter(category__name='drinks').filter(producer__pk=razeni).order_by('name').distinct()
 		ost_kat = Category.objects.filter(product__producer__pk=razeni).distinct().exclude(name='drinks').exclude(name=kategorie).distinct()
+		for ft in FoodType.objects.filter():
+			foodtypes[ft.ftype] = ft.name
+			specials[ft.ftype] = Product.objects.filter(foodtype__pk=ft.pk).distinct()
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
@@ -171,6 +176,8 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'prodlist': produkty,
 		'producent': producent,
 		'napoje': napoje,
+		'specials': specials,
+		'foodtypes': foodtypes,
 		'ptags': ptags,
 		'infotext': infotext,
 		'ost_kat': ost_kat,
