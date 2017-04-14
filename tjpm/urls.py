@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^login_form/$', views.login_form, name='login_form'),
 	url(r'^login/$', views.login, name='login'),
 	url(r'^logout/$', views.logout, name='logout'),
+	url(r'^api/orders/get/0/$', views.getOpenedOrders, name='getOpenedOrders')
 ]

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from shop1.models import Producer, Order, OrderItem, Product
 
@@ -78,3 +78,26 @@ def logout(request):
 		pass
 	
 	return HttpResponse("Successfully logged out")
+
+def getOpenedOrders(request):
+    producent = getProducer(request)
+    if not producent:
+        return HttpResponse('You are not a producer!')
+    
+    objednavky = []
+    open_orders = Order.objects.filter(ordersubstatus__producer__pk=producent.pk).distinct().filter(suborder__status=0).distinct()
+    if open_orders:
+        for order in open_orders:
+            items_order = OrderItem.objects.filter(order__pk=order.pk).distinct().filter(product__producer__pk=producent.pk).distinct()
+
+            objednavka = {}
+            objednavka['order'] = order
+            objednavka['substatus'] = OrderSubstatus.objects.get(order__pk=order.pk, producer__pk=producent.pk)
+            objednavka['polozky'] = []
+            
+            for oi_items_order in items_order:
+                objednavka['polozky'] += [oi_items_order]
+            
+            objednavky += [objednavka]
+	
+	return JsonResponse({'objednavky':objednavky})

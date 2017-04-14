@@ -92,7 +92,6 @@ class Order(models.Model):
 	order_date = models.DateTimeField(default=timezone.now)
 	delivery_time = models.DateTimeField()
 	total_cost = models.IntegerField(default=0)
-	status = models.IntegerField(default=0)
 	
 	def __unicode__(self):
 		total_products = len(OrderItem.objects.filter(order=self.pk))
@@ -108,6 +107,14 @@ class OrderItem(models.Model):
 	
 	def __unicode__(self):
 		return str(self.quantity) + 'x ' + self.product.name
+
+class OrderSubstatus(models.Model):
+	order = models.ForeignKey('shop1.Order')
+	producer = models.ForeignKey('shop1.Producer')
+	status = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.order + ' P[' + self.producer + '] S:[#' + str(self.status) + ']'
 
 class PageInfo(models.Model):
 	info_text = models.TextField()
