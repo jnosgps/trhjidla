@@ -36,7 +36,7 @@
 					</div>
 					<svg class="semafor">
 						{% for stav, barva in semstavy.iteritems %}
-							{% if restaurace.online == stav %}
+							{% if producent.online == stav %}
 								<circle cx="10" cy="10" r="5" fill="{{ barva }}" />
 							{% endif %}
 						{% endfor %}

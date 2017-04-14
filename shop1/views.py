@@ -178,6 +178,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'napoje': napoje,
 		'specials': specials,
 		'foodtypes': foodtypes,
+		'semstavy': semafor_barva,
 		'ptags': ptags,
 		'infotext': infotext,
 		'ost_kat': ost_kat,
