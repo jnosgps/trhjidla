@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from shop1.models import Producer, Order, OrderItem, Product
+from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product
 
 def getProducer(request):
 	p = {}
