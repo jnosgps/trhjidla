@@ -114,7 +114,7 @@ class OrderSubstatus(models.Model):
 	status = models.IntegerField(default=0)
 
 	def __unicode__(self):
-		return self.order + ' P[' + self.producer + '] S:[#' + str(self.status) + ']'
+		return str(self.order) + ' P[' + self.producer.name + '] S:[#' + str(self.status) + ']'
 
 class PageInfo(models.Model):
 	info_text = models.TextField()
