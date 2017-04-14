@@ -145,8 +145,8 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	
 	producent = {}
 	ptags = {}
-	typed_products = {}
 	napoje = {}
+	ost_kat = {}
 	
 	if razeni == 'az':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('name').distinct()
@@ -157,6 +157,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		producent = Producer.objects.get(pk=razeni)
 		ptags = LabelTag.objects.filter(product__producer__pk=razeni).distinct()
 		napoje = Product.objects.filter(category__name='drinks').filter(producer__pk=razeni).order_by('name').distinct()
+		ost_kat = Category.objects.filter(product__producer__pk=razeni).distinct().exclude(name='drinks').exclude(name=kategorie).distinct()
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
@@ -165,12 +166,14 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'kategorie_familiar': katfam[kategorie],
 		'kategorie_imgsrc': katimg2[kategorie],
 		'noimg_src': katimg[kategorie],
+		'katfam': katfam,
 		'razeni': razeni,
 		'prodlist': produkty,
 		'producent': producent,
 		'napoje': napoje,
 		'ptags': ptags,
 		'infotext': infotext,
+		'ost_kat': ost_kat,
 	})
 
 def product_detail(request, pk):

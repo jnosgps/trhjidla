@@ -40,7 +40,20 @@
 					<div class="row">
 						{{ producent.address }}
 					</div>
-					<div class="row">    <!--  MOZNA PRIDAT .all za %ptags   -->
+					{% if ost_kat %}
+						<div class="row">
+							{% for kat in ost_kat %}
+								<a href="{% url 'products_list' kategorie=kat.name razeni=razeni %}">
+									{% for k,v in katfam.iteritems %}
+										{% if k == kat.name %}
+											{{ v }}
+										{% endif %}
+									{% endfor %}
+								</a>
+							{% endfor %}
+						</div>
+					{% endif %}
+					<div class="row">
 						{% for lt in ptags %}
 							<span class="label label-default">{{ lt }}</span>
 						{% endfor %}
