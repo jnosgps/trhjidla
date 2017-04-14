@@ -43,12 +43,14 @@
 					{% if ost_kat %}
 						<div class="row">
 							{% for kat in ost_kat %}
-								<a href="{% url 'products_list' kategorie=kat.name razeni=razeni %}">
+								<a class="ostkatost" href="{% url 'products_list' kategorie=kat.name razeni=razeni %}">
+									<span class="label label-success">
 									{% for k,v in katfam.iteritems %}
 										{% if k == kat.name %}
 											{{ v }}
 										{% endif %}
 									{% endfor %}
+									</span>
 								</a>
 							{% endfor %}
 						</div>
