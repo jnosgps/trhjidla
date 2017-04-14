@@ -100,4 +100,4 @@ def getOpenedOrders(request):
             
             objednavky += [objednavka]
 	
-	return JsonResponse({'objednavky':objednavky})
+	return JsonResponse({'objednavky':objednavky}, safe=False)
