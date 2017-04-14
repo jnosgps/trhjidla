@@ -34,6 +34,13 @@
 					<div class="row">
 						<a>{{ producent.name }}</a>
 					</div>
+					<svg class="semafor">
+						{% for stav, barva in semstavy.iteritems %}
+							{% if restaurace.online == stav %}
+								<circle cx="10" cy="10" r="5" fill="{{ barva }}" />
+							{% endif %}
+						{% endfor %}
+					</svg>
 					<div class="row">
 						Hodnocení
 					</div>
