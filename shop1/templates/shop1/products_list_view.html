@@ -42,6 +42,7 @@
 					</div>
 					{% if ost_kat %}
 						<div class="row">
+							V nabídce také: 
 							{% for kat in ost_kat %}
 								<a class="ostkatost" href="{% url 'products_list' kategorie=kat.name razeni=razeni %}">
 									<span class="label label-success">
