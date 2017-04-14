@@ -71,7 +71,7 @@
 			{% if special_products %}
 				<div class="container">
 					<h2>
-						{% for ftft, ftnm in foodtypes %}
+						{% for ftft, ftnm in foodtypes.iteritems %}
 							{% if ftft == special_ftype %}
 								{{ ftnm }}
 							{% endif %}
