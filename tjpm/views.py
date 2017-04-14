@@ -85,7 +85,7 @@ def getOpenedOrders(request):
         return HttpResponse('You are not a producer!')
     
     objednavky = []
-    open_orders = Order.objects.filter(ordersubstatus__producer__pk=producent.pk).distinct().filter(suborder__status=0).distinct()
+    open_orders = Order.objects.filter(ordersubstatus__producer__pk=producent.pk).distinct().filter(ordersubstatus__status=0).distinct()
     if open_orders:
         for order in open_orders:
             items_order = OrderItem.objects.filter(order__pk=order.pk).distinct().filter(product__producer__pk=producent.pk).distinct()
