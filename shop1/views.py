@@ -162,7 +162,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		ost_kat = Category.objects.filter(product__producer__pk=razeni).distinct().exclude(name='drinks').exclude(name=kategorie).distinct()
 		for ft in FoodType.objects.filter():
 			foodtypes[ft.ftype] = ft.name
-			specials[ft.ftype] = Product.objects.filter(foodtype__pk=ft.pk).distinct()
+			specials[ft.ftype] = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).distinct().filter(food_type__pk=ft.pk).distinct()
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
