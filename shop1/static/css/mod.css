@@ -164,6 +164,7 @@
 	border-radius: 5px;
 	padding: 5px;
 	margin-bottom: 12px;
+	box-shadow: 1px 1px 6px 1px #333;
 }
 
 .products-single thumbnail {
