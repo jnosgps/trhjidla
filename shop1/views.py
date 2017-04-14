@@ -132,7 +132,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'razeni': razeni,
 		'restlist': restaurace,
 		'infotext': infotext,
-		'semstavy': semafor_barva.iteritems(),
+		'semstavy': semafor_barva,
 	})
 
 #                                                                                                PRODUCTS LIST
