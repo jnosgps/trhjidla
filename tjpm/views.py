@@ -6,6 +6,9 @@ from django.core.serializers import serialize
 
 from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product
 
+from rest_framework import viewsets
+from tjpm.serializers import OrderSerializer
+
 def getProducer(request):
 	p = {}
 	try:
@@ -102,3 +105,10 @@ def getOpenedOrders(request):
             objednavky += [objednavka]
 	
 	return JsonResponse({'objednavky':objednavky}, safe=False)
+
+class OrderViewSet(viewsets.ModelViewSet):
+	"""
+	API endpoint C[R][U]D Order
+	"""
+	queryset = Order.objects.filter(ordersubstatus__producer__id=1).distinct().filter(ordersubstatus__status=0).distinct()
+	serializer_class = OrderSerializer
