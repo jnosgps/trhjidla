@@ -112,3 +112,17 @@ class OrderViewSet(viewsets.ModelViewSet):
 	"""
 	queryset = Order.objects.filter(ordersubstatus__producer__id=1).distinct().filter(ordersubstatus__status=0).distinct()
 	serializer_class = OrderSerializer
+
+class CustomerViewSet(viewsets.ModelViewSet):
+	"""
+	API endpoint C[R][U]D Customer
+	"""
+	queryset = Customer.objects.all()
+	serializer_class = OrderSerializer
+
+class MemberViewSet(viewsets.ModelViewSet):
+	"""
+	API endpoint C[R][U]D Order
+	"""
+	queryset = Member.objects.all()
+	serializer_class = OrderSerializer
