@@ -118,11 +118,11 @@ class CustomerViewSet(viewsets.ModelViewSet):
 	API endpoint C[R][U]D Customer
 	"""
 	queryset = Customer.objects.all()
-	serializer_class = OrderSerializer
+	serializer_class = CustomerSerializer
 
 class MemberViewSet(viewsets.ModelViewSet):
 	"""
 	API endpoint C[R][U]D Order
 	"""
 	queryset = Member.objects.all()
-	serializer_class = OrderSerializer
+	serializer_class = MemberSerializer
