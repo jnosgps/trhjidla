@@ -7,7 +7,7 @@ from django.core.serializers import serialize
 from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product, Customer, Member
 
 from rest_framework import viewsets
-from tjpm.serializers import OrderSerializer
+from tjpm.serializers import OrderSerializer, CustomerSerializer, MemberSerializer
 
 def getProducer(request):
 	p = {}
