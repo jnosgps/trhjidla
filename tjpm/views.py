@@ -2,6 +2,7 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.core.serializers import serialize
 
 from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product
 
@@ -91,12 +92,12 @@ def getOpenedOrders(request):
             items_order = OrderItem.objects.filter(order__pk=order.pk).distinct().filter(product__producer__pk=producent.pk).distinct()
 
             objednavka = {}
-            objednavka['order'] = order
-            objednavka['substatus'] = OrderSubstatus.objects.get(order__pk=order.pk, producer__pk=producent.pk)
+            objednavka['order'] = serialize('json', order)
+            objednavka['substatus'] = serialize('json', OrderSubstatus.objects.get(order__pk=order.pk, producer__pk=producent.pk))
             objednavka['polozky'] = []
             
             for oi_items_order in items_order:
-                objednavka['polozky'] += [oi_items_order]
+                objednavka['polozky'] += [serialize('json', oi_items_order)]
             
             objednavky += [objednavka]
 	
