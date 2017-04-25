@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core.serializers import serialize
 
-from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product
+from shop1.models import Producer, Order, OrderItem, OrderSubstatus, Product, Customer, Member
 
 from rest_framework import viewsets
 from tjpm.serializers import OrderSerializer
