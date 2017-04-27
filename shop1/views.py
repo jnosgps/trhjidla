@@ -164,7 +164,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 			foodtypes[ft.ftype] = ft.name
 			specials[ft.ftype] = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).distinct().filter(food_type__pk=ft.pk).distinct()
 		if specials:
-			produkty = Product.objects.filter(category__name=kategorie).filter(producer_pk=razeni).order_by('name').exclude(food_type__isnull=True)
+			produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').exclude(food_type__isnull=True)
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
