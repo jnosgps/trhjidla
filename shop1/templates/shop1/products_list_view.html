@@ -1,4 +1,4 @@
-{% extends 'shop1/index_base.html' %}
+		{% extends 'shop1/index_base.html' %}
 {% load staticfiles %}
 
 {% block page_title %}{{kategorie_familiar}}{% endblock %}
@@ -122,7 +122,7 @@
 				</div>
 			{% endif %}
 		{% endfor %}
-	{% else %}
+	{% endif %}
 
 	<div class="container">
 		{% if prodlist %}
@@ -165,7 +165,8 @@
 		{% endif %}
 			
 	</div>
-	{% endif %}
+
+	
 	{% if napoje %}
 		<div class="row">
 			<div class="container"><div class="row drinks-title">
