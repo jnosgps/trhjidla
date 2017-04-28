@@ -155,7 +155,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 	elif razeni == 'top':
 		produkty = Product.objects.filter(category__name=kategorie).order_by('cost').distinct()
 	else:
-		produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').distinct()
+		produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').filter(food_type__isnull=True).distinct()
 		producent = Producer.objects.get(pk=razeni)
 		ptags = LabelTag.objects.filter(product__producer__pk=razeni).distinct()
 		napoje = Product.objects.filter(category__name='drinks').filter(producer__pk=razeni).order_by('name').distinct()
@@ -163,11 +163,11 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		for ft in FoodType.objects.filter():
 			foodtypes[ft.ftype] = ft.name
 			specials[ft.ftype] = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).distinct().filter(food_type__pk=ft.pk).distinct()
-		if specials:
-			produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').exclude(food_type__isnull=True)
-			print produkty
-		print produkty
-		print specials
+#		if specials:
+#			produkty = Product.objects.filter(category__name=kategorie).filter(producer__pk=razeni).order_by('name').exclude(food_type__isnull=True)
+#			print produkty
+#		print produkty
+#		print specials
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
