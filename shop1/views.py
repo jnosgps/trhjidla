@@ -111,12 +111,13 @@ def checkout(request):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
 	timekosik = tryToGetAfterBasket(request)
+	infotext = PageInfo.objects.get().info_text
 
 	return render(request, 'shop1/checkout_view.html', {
 		'member': member,
 		'kosik': kosik,
 		'kosik2': timekosik,
-		'infotext': pi.info_text,
+		'infotext': infotext,
 	})
 
 #                                                                                                PRODUCERS LIST
