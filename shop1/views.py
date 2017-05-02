@@ -111,8 +111,8 @@ def checkout(request):
 	member = tryToGetMember(request)
 	kosik = tryToGetBasket(request)
 	timekosik = tryToGetAfterBasket(request)
-	
-	return render(request, 'shop1/impressum_view.html', {
+
+	return render(request, 'shop1/checkout_view.html', {
 		'member': member,
 		'kosik': kosik,
 		'kosik2': timekosik,
