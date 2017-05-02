@@ -207,8 +207,12 @@
 }
 
 .kosik-menu p {
+	padding-left: auto;
+	padding-right: auto;
 	margin-left: auto;
 	margin-right: auto;
+	text-align: center;
+	display: inline-block;
 }
 
 .kosik-menu a, .kosik-menu a:visited, .kosik-menu a:link, .kosik-menu a:hover, .kosik-menu:hover a, .kosik-menu:hover a:visited, .kosik-menu:hover a:link, .kosik-menu:hover a:hover {
