@@ -45,7 +45,7 @@ $("#logout-a").click(function() {
 
 $('.addToCart').on('click', function() {
 	var postdata = {'productId': $(this).data('productid'), 'productValue': $(this).data('productvalue'), 'csrfmiddlewaretoken': csrf_token};
-	//console.log(postdata)
+	console.log(postdata)
 	$.post('/shop1/addToCart/', postdata, function(data, status) {
 		if (status == 'success') location.reload(true);
 		else alert("Data: " + data + "\nStatus:" + status);
@@ -53,7 +53,7 @@ $('.addToCart').on('click', function() {
 });
 $('.addToCart2').on('click', function() {
 	var postdata = {'productId': $(this).data('productid'), 'productValue': $(this).data('productvalue'), 'csrfmiddlewaretoken': csrf_token};
-	//console.log(postdata)
+	console.log(postdata)
 	$.post('/shop1/addToCart2/', postdata, function(data, status) {
 		if (status == 'success') location.reload(true);
 		else alert("Data: " + data + "\nStatus:" + status);
