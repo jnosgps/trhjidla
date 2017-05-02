@@ -106,6 +106,19 @@ def impressum(request):
 		'pi': pi,
 	})
 
+#                                                                                                CHECKOUT
+def checkout(request):
+	member = tryToGetMember(request)
+	kosik = tryToGetBasket(request)
+	timekosik = tryToGetAfterBasket(request)
+	
+	return render(request, 'shop1/impressum_view.html', {
+		'member': member,
+		'kosik': kosik,
+		'kosik2': timekosik,
+		'infotext': pi.info_text,
+	})
+
 #                                                                                                PRODUCERS LIST
 def producers_list(request, kategorie='fastfood', razeni='az'):
 	member = tryToGetMember(request)

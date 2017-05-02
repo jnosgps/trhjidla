@@ -9,6 +9,8 @@ urlpatterns = [
 	url(r'^produkty/(?P<kategorie>(fastfood|freshfood|sweets|raws|direct))/(?P<razeni>((az|top|on)|([0-9]+)))/$', views.products_list, name='products_list'),
 	
 	url(r'^produkt/(?P<pk>([0-9]+))/$', views.product_detail, name='product_detail'),
+
+	url(r'^checkout/', views.checkout, name='checkout'),
 	
 	url(r'^algo/$', views.algorythmize_text, name='algorythmize_text'),
 	
