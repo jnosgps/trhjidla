@@ -138,3 +138,19 @@ class LabelTag(models.Model):
 
 	def __unicode__(self):
 		return self.label
+
+class ProducerRating(models.Model):
+	producer = models.ForeignKey('shop1.Producer')
+	rate = models.IntegerField()
+	rated_on = models.DateTimeField(default=timezone.now)
+
+	def __unicode__(self):
+		return self.producer.name + ' - ' + str(self.rate) + ' - ' + str(self.rated_on)
+
+class ProductRating(models.Model):
+	product = models.ForeignKey('shop1.Product')
+	rate = models.IntegerField()
+	rated_on = models.DateTimeField(default=timezone.now)
+
+	def __unicode__(self):
+		return self.product.name + ' - ' + str(self.rate) + ' - ' + str(self.rated_on)
