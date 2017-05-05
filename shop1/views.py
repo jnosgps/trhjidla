@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo, LabelTag, FoodType
+from .models import Category, Producer, Product, Member, Customer, Order, OrderItem, PageInfo, LabelTag, FoodType, ProducerRating, ProductRating
 import hashlib
 from django.utils import timezone
 
@@ -127,6 +127,8 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	timekosik = tryToGetAfterBasket(request)
 	
 	infotext = PageInfo.objects.get().info_text
+
+	#hodnoceni_rest = ProducerRating.objects.all()
 		
 	if razeni == 'az':
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('-online', 'name').distinct()
@@ -134,6 +136,20 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		restaurace = Producer.objects.filter(product__category__name=kategorie).order_by('-online', '-registered_date').distinct()
 	else:
 		restaurace  = Producer.objects.filter(product__category__name=kategorie).order_by('-online').distinct()
+	
+	rest_hodnoceni = []
+	for r in restaurace:
+		hodnoceni_qs = ProducerRating.objects.filter(producer=restaurace)
+		r_hodnoceni = 0
+		r_znamky = 0
+		r_cnt = 0
+		for h in hodnoceni_qs:
+			r_znamky += h.rate
+			r_cnt += 1
+		if r_znamky != 0:
+			if r_cnt != 0:
+				r_hodnoceni = r_znamky / r_cnt * 100
+		rest_hodnoceni.append({'producer': r, 'rating': r_hodnoceni})
 	
 	return render(request, 'shop1/producers_list_view.html', {
 		'member': member,
@@ -145,6 +161,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 		'katkat': kategorie,
 		'razeni': razeni,
 		'restlist': restaurace,
+		'restrating': rest_hodnoceni,
 		'infotext': infotext,
 		'semstavy': semafor_barva,
 	})

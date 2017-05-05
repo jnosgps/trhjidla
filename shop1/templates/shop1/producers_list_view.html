@@ -38,7 +38,11 @@
 							Štítky
 						</div>
 						<div class="xrow">
-							Hodnocení
+							{% for hodnoceni in restrating %}
+								{% if hodnoceni.producer == restaurace %}
+									{{ hodnoceni.rating }}
+								{% endif %}
+							{% endfor %}
 						</div>
 						<div class="xrow">
 							{{ restaurace.address }}
