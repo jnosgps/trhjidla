@@ -139,7 +139,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 	
 	rest_hodnoceni = []
 	for r in restaurace:
-		hodnoceni_qs = ProducerRating.objects.filter(producer=restaurace)
+		hodnoceni_qs = ProducerRating.objects.filter(producer=r)
 		r_hodnoceni = 0
 		r_znamky = 0
 		r_cnt = 0
