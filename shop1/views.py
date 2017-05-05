@@ -148,7 +148,7 @@ def producers_list(request, kategorie='fastfood', razeni='az'):
 			r_cnt += 1
 		if r_znamky != 0:
 			if r_cnt != 0:
-				r_hodnoceni = r_znamky / r_cnt * 100
+				r_hodnoceni = r_znamky / r_cnt * 20
 		rest_hodnoceni.append({'producer': r, 'rating': r_hodnoceni})
 	
 	return render(request, 'shop1/producers_list_view.html', {
