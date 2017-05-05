@@ -199,6 +199,19 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 #			print produkty
 #		print produkty
 #		print specials
+	prod_hodnoceni = []
+	for p in produkty:
+		hodnoceni_qs = ProductRating.objects.filter(product=p)
+		p_hodnoceni = 0
+		p_znamky = 0
+		p_cnt = 0
+		for h in hodnoceni_qs:
+			p_znamky += h.rate
+			p_cnt += 1
+		if p_znamky != 0:
+			if p_cnt != 0:
+				p_hodnoceni = p_znamky / p_cnt * 20
+		prod_hodnoceni.append({'product': p, 'rating': p_hodnoceni})
 	
 	return render(request, 'shop1/products_list_view.html', {
 		'member': member,
@@ -210,6 +223,7 @@ def products_list(request, kategorie='fastfood', razeni='az'):
 		'katfam': katfam,
 		'razeni': razeni,
 		'prodlist': produkty,
+		'prodrating': prod_hodnoceni,
 		'producent': producent,
 		'napoje': napoje,
 		'specials': specials,
